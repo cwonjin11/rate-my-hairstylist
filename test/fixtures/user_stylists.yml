@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  haircut_date: 2021-05-08
+  stars: 1
+  comment: MyString
+  services: MyString
+  price: 1.5
+  user: one
+  stylist: one
+
+two:
+  haircut_date: 2021-05-08
+  stars: 1
+  comment: MyString
+  services: MyString
+  price: 1.5
+  user: two
+  stylist: two
