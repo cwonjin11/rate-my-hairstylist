@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
+gem 'pry'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -46,7 +47,7 @@ group :development do
 end
 
 group :test do
-  gem 'pry'
+  # gem 'pry'
   #makes it never gonna push credentials to GitHub.
   gem 'dotenv' 
   # Adds support for Capybara system testing and selenium driver
