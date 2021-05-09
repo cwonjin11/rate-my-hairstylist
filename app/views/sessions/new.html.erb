@@ -1,0 +1,19 @@
+<h1> Welcome to Rate My Hair Stylist!!! 🤩</h1><br>
+
+<% User.all.each do |user| %>
+<li><%= user.username %></li>
+<% end %>
+
+<%= form_with url: '/login' do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
+
+        <br>
+    
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+
+        <br><br>
+    
+    <%= f.submit "Login🌀💫" %>
+<% end %>

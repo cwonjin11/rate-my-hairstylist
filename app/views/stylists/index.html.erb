@@ -1,0 +1,15 @@
+<h1>Stylists#index</h1>
+<h1> ALL Stylists Info </h1>
+<h2> Name - Shop </h2>
+
+<ul>
+<% @stylists.each do |stylist| %>
+<li>
+    <p>
+    
+    <%= link_to stylist.name, stylist_path(stylist) %> working at <%= stylist.shop_name %><br>
+    </p>
+</li>
+<% end %>
+
+</ul>

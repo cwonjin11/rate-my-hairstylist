@@ -1,0 +1,16 @@
+<h1>UserStylist index page </h1>
+<h1> ALL stylists' reviews for this user</h1>
+
+<ul>
+
+<% @user_stylists.each do |user_stylist| %>
+<li><%= user_stylist.haircut_date %>
+<%= user_stylist.stars %>
+<%= user_stylist.comment %>
+<%= user_stylist.services %>
+<%= user_stylist.price %>
+user_id <%= user_stylist.user_id %>
+stylist_id <%= user_stylist.stylist_id %>
+</li>
+<% end%>
+<ul>
