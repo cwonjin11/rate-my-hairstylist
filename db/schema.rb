@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_05_09_014843) do
 
   create_table "stylists", force: :cascade do |t|
     t.string "name"
-    t.integer "phone"
+    t.string "phone"
     t.string "shop_name"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
