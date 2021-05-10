@@ -25,7 +25,7 @@ delete 'logout', to: "sessions#destroy"
 
 # 🚧 # THINGS WE HAVE TO BUILD OUT
 
-  get 'welcome', to: "session#welcome" 
+get 'welcome', to: "sessions#welcome" 
 
 # 🚧 #
 
