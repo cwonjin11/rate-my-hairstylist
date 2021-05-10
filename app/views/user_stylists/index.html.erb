@@ -1,16 +1,19 @@
 <h1>UserStylist index page </h1>
-<h1> ALL stylists' reviews for this user</h1>
+<h2> You Have total <span class="red"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
 
-<ul>
+<ol>
 
-<% @user_stylists.each do |user_stylist| %>
-<li><%= user_stylist.haircut_date %>
-<%= user_stylist.stars %>
-<%= user_stylist.comment %>
-<%= user_stylist.services %>
-<%= user_stylist.price %>
-user_id <%= user_stylist.user_id %>
-stylist_id <%= user_stylist.stylist_id %>
+<% @user_stylists.order(haircut_date: :desc).each do |user_stylist| %>
+<li>
+
+Date : <i><%= user_stylist.haircut_date %></i><br>
+Who was your hair stylist ? 
+Your Rating : <%= user_stylist.stars %> out of 5 <br>
+Comment : <%= user_stylist.comment %> <br>
+What service did you get ? <%= user_stylist.services %> <br>
+How much was it ? <%= user_stylist.price %> <br>
+user_id : <%= user_stylist.user_id %> &&
+stylist_id : <%= user_stylist.stylist_id %><br><br>
 </li>
 <% end%>
-<ul>
+<ol>
