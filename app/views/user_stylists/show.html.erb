@@ -1,0 +1,24 @@
+
+<h1> User_Stylist Details / Show page</h1>
+
+
+<ol>
+
+<li>
+Date : <i><%= @user_stylist.haircut_date %></i><br>
+<!-- got the stylist name here!! -->
+✄ Who was your hair stylist ? <%= @stylist.name  %><br>
+✄ Your Rating : <%= @user_stylist.stars %> out of 5 <br>
+✄ Comment : <%= @user_stylist.comment %> <br>
+✄ What service did you get ? <%= @user_stylist.services %> <br>
+✄ How much was it ? $<%= @user_stylist.price %> <br><br>
+
+<br><br>
+✄ <%= link_to "stylist info", stylist_path(@stylist) %>
+
+stylist_info : <%= @stylist.phone%> 
+
+<br><br>
+</li>
+
+<ol>

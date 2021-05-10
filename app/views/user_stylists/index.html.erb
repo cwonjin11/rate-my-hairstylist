@@ -1,5 +1,5 @@
 <h1>UserStylist index page </h1>
-<h2> You Have total <span class="red"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
+<h2> You have total <span class="red"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
 
 <ol>
 
@@ -7,13 +7,19 @@
 <li>
 
 Date : <i><%= user_stylist.haircut_date %></i><br>
-Who was your hair stylist ? 
-Your Rating : <%= user_stylist.stars %> out of 5 <br>
-Comment : <%= user_stylist.comment %> <br>
-What service did you get ? <%= user_stylist.services %> <br>
-How much was it ? <%= user_stylist.price %> <br>
-user_id : <%= user_stylist.user_id %> &&
-stylist_id : <%= user_stylist.stylist_id %><br><br>
+✄ Who was your hair stylist ? <%=  %> <br>
+✄ Your Rating : <%= user_stylist.stars %> out of 5 <br>
+<%= link_to "details for this review", user_user_stylist_path(@user, user_stylist) %>
+<!-- ✄ Comment : <%= user_stylist.comment %> <br>
+✄ What service did you get ? <%= user_stylist.services %> <br>
+✄ How much was it ? $<%= user_stylist.price %> <br><br>
+
+###### instead of stylist ID, code ones name! ######<br>
+✄ user_id : <%= user_stylist.user_id %> <br>
+✄ stylist_id : <%= user_stylist.stylist_id %>  -->
+
+<br><br>
 </li>
 <% end%>
+
 <ol>
