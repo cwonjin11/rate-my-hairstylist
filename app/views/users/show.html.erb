@@ -1,8 +1,7 @@
-<h1>HELLO, <%= current_user.username.upcase %> 🤯 </h1>
 
-<br>
+
 <h2>Here is your Info.</h2>
-
+-------------------------------------------------
 <table>
   <thead>
     <tr>
@@ -19,13 +18,14 @@
       </tr>
   </tbody>
 </table>
-
+-------------------------------------------------
+<p>💁💫 <%= link_to "EDIT Your Profile", edit_user_path(@user) %> 💁💫</p>
+<p>🤷 <%= link_to "DELETE Your Account", @user, method: :delete %> 🤷</p>
 <br><br>
 
 <h2>Click here to see your reviews </h2>
-<p><%= link_to "Your Reviews", user_user_stylists_path(@user) %></p>
+<h2><%= link_to "🤩 Your Reviews 🤩", user_user_stylists_path(@user) %></h2>
+<br><br>
 
-<h2><%= link_to "EDIT Your Info Here💁💫", edit_user_path(@user) %></h2>
-<h2><%= link_to "DELETE This User's Account 🤷", @user, method: :delete %></h2>
 
 
