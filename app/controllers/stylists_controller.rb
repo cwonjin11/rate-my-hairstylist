@@ -3,15 +3,15 @@ class StylistsController < ApplicationController
     # binding.pry
       @stylists = Stylist.all
   end
-
   def show
     # binding.pry
       @stylist = Stylist.find_by_id(params[:id])
   end
 
+
+  
   def new
   end
-
   def create
   end
 

@@ -8,16 +8,15 @@ class UsersController < ApplicationController
     def index 
         @users = User.all
     end
-
     def show
         # binding.pry
     end
 
 
+
     def new 
         @user = User.new
     end
-
     def create 
         @user = User.new(user_params)
         
@@ -33,13 +32,9 @@ class UsersController < ApplicationController
 
 
 
-
-
-
     def edit
 
     end
-
     def update
         # binding.pry
         @user.update(user_params)
@@ -48,10 +43,6 @@ class UsersController < ApplicationController
             #YOU CAN ALSO DO THIS: redirect_to @user 
 
     end
-
-
-
-
 
 
     def destroy

@@ -8,9 +8,10 @@ class SessionsController < ApplicationController
       end
   end
 
-  def new # REMEMBER  : NOT TAKING IN AN OBJECT!!
-  end
 
+  def new # REMEMBER  : NOT TAKING IN AN OBJECT!!
+  
+  end
   def create
 
     @user = User.find_by(username: params[:username])
