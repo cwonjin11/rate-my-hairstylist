@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
 
+    skip_before_action :current_user, only: [:new, :create]
+    skip_before_action :logged_in?, only: [:new, :create]
+    skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
+
     def index 
         @users = User.all
     end
 
     def show
-
+        # binding.pry
     end
-
-
-
 
 
     def new 
@@ -54,6 +55,9 @@ class UsersController < ApplicationController
 
 
     def destroy
+        # binding.pry
+        @user.destroy
+        redirect_to users_path
 
     end
 

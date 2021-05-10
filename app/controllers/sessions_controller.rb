@@ -1,4 +1,13 @@
 class SessionsController < ApplicationController
+  skip_before_action :redirect_if_not_logged_in, only: [:welcome, :new, :create]
+  skip_before_action :logged_in? 
+  def welcome
+    @user = User.find_by_id(params[:id])
+      if logged_in?
+        redirect_to user_path(@user)
+      end
+  end
+
   def new # REMEMBER  : NOT TAKING IN AN OBJECT!!
   end
 
@@ -29,5 +38,5 @@ class SessionsController < ApplicationController
   end
 
 
-  
+
 end
