@@ -23,3 +23,10 @@ UserStylist
 STYLIST
 
 
+
+### What to add ###
+* welcome page  
+1. button for Oauth 
+<div class="github-button">
+  <%= login_with_github %>
+</div>

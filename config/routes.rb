@@ -37,7 +37,7 @@ get 'welcome', to: "sessions#welcome"
   resources :users do
 
     resources :user_stylists
-    
+    # resources :stylists
   end
 
   resources :user_stylists
