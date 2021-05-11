@@ -1,14 +1,12 @@
-<h1>Stylists#show</h1>
+<h1>✂️ <%= @stylist.name %> details ✂️</h1>
+
 
 <ul>
-<li>
-    <p>
-    Name : <%= @stylist.name %><br>     
-    Phone : <%= @stylist.phone %><br>
-    Shop : <%= @stylist.shop_name %><br>
-    Address : <%= @stylist.address %>
-    </p>
-</li>
-<ul>
 
+    <li>Name : <span style="color:SlateBlue;font-weight:bold"> <%= @stylist.name %> </spna></li>
+    <li>Phone ☎️ : <%= @stylist.phone %></li>
+    <li>Shop Name : <span style="color:red;"> <%= @stylist.shop_name %> </span> </li>
+    <li>Address : <span style="color:green;">  <%= @stylist.address %></span></li>
+    <li>Rating : <%= @stylist.average_rating %></li>
+</ul>
 

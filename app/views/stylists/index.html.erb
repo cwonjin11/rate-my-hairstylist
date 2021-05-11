@@ -6,7 +6,10 @@
 <% @stylists.order(created_at: :desc).each do |stylist| %>
 <li>
     <p>
-    <%= link_to stylist.name, stylist_path(stylist) %> working at <%= stylist.shop_name %><br>
+    <!--  scope method for hairstylist average rating -->
+    
+     Name : <%= link_to stylist_name(stylist), stylist_path(stylist) %> <br>
+     Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>
     </p>
 </li>
 <% end %>
