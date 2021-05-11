@@ -1,6 +1,6 @@
 
 <% if params[:user_id] %>
-<h2> You have total <span class="red"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
+<h2> You have total <span style="color:crimson;"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
 
 <ol>
 
@@ -25,7 +25,7 @@
 <% end%>
 
 <% else %>
-<h2> We have total <span class="red"> <%= UserStylist.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
+<h2> We have total <span style="color:crimson;"> <%= UserStylist.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
 
 <ol>
 

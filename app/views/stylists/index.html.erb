@@ -1,6 +1,6 @@
-<h1>Stylists#index</h1>
-<h1> ALL Stylists Info </h1>
-<h2> Name - Shop </h2>
+<h1> Here are all the hairstylists' information and their ratings !! </h1>
+<h2> You have total <span style="color:crimson;"> <%= @stylists.size %> </span> <%= "review".pluralize(@stylists.size) %> </h2>
+
 
 <ul>
 <% @stylists.order(created_at: :desc).each do |stylist| %>
@@ -8,9 +8,9 @@
     <p>
     <!--  scope method for hairstylist average rating -->
     
-     Name : <%= link_to stylist_name(stylist), stylist_path(stylist) %> <br>
-     Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
-     Total  : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
+     Name : ✂️<%= link_to stylist_name(stylist), stylist_path(stylist) %>✂️ <br>
+     Average Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
+     Total reviews : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
 
      <!-- <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(stylist.user_stylists.size) %> -->
 
