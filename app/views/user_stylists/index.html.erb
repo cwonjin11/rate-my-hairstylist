@@ -1,15 +1,17 @@
-<h1>UserStylist index page </h1>
+
+<% if params[:user_id] %>
 <h2> You have total <span class="red"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
 
 <ol>
 
-<% @user_stylists.order(haircut_date: :desc).each do |user_stylist| %>
+<% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
 <li>
 
-Date : <i><%= user_stylist.haircut_date %></i><br>
-✄ Who was your hair stylist ? <%=  %> <br>
+Date : <i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i><br>
+✄ Who was your hair stylist ? <%= list_with_names user_stylist %> <br>
 ✄ Your Rating : <%= user_stylist.stars %> out of 5 <br>
-<%= link_to "details for this review", user_user_stylist_path(@user, user_stylist) %>
+✄ What service did you get ? <%= user_stylist.services %> <br>
+
 <!-- ✄ Comment : <%= user_stylist.comment %> <br>
 ✄ What service did you get ? <%= user_stylist.services %> <br>
 ✄ How much was it ? $<%= user_stylist.price %> <br><br>
@@ -22,4 +24,21 @@ Date : <i><%= user_stylist.haircut_date %></i><br>
 </li>
 <% end%>
 
+<% else %>
+<h2> We have total <span class="red"> <%= UserStylist.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
+
 <ol>
+
+<% @user_stylists.order(haircut_date: :desc).each do |user_stylist| %>
+<li>
+
+Date : <i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i><br>
+✄ Who was your hair stylist ? <%= list_with_names user_stylist %> <br>
+✄ Your Rating : <%= user_stylist.stars %> out of 5 <br>
+✄ What service did you get ? <%= user_stylist.services %> <br>
+
+<% end %>
+
+<ol>
+
+<% end %>

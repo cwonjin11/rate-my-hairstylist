@@ -1,1 +1,63 @@
 <h1>New user_stylist form</h1>
+
+
+
+<%= form_with model: @user_stylist do |f| %>
+    <!-- <%= f.collection_select :user_id, User.all, :id, :username %> -->
+    
+        Who was your hair stylist ?
+
+
+    <!--<%= f.collection_check_boxes :stylist_id, Stylist.all, :id, :name %>   -->
+
+   <%= f.collection_select :stylist_id, Stylist.all, :id, :name, 
+    {:prompt => 'Please select the stylist'} %>
+       <!--   <%= f.fields_for :stylists, @user.stylists.build do |stylists_fields| %>
+    <%= stylists_fields.text_field :name %>   <br><br> 
+    <% end %> -->
+
+
+
+        <%= f.label :haircut_date, "What date did you get your hair cut? " %>
+        <%= f.date_field :haircut_date %><br>
+        <%= f.label :rating, "Let's rate your hair stylist! " %>
+        <%= f.number_field :stars, within: 1...6 %><br>
+        <%= f.label :services, "men's haircuts? women's hair cut? kids? perm? dying? " %>
+        <%= f.text_field :services %><br>
+        <%= f.label :price, "How much did you pay for? " %>
+        <%= f.number_field :price, step: :any %><br>
+        <%= f.label :comment, "Please share your experience! " %>
+        <%= f.text_area :comment %><br>
+    
+
+
+    
+        <br><br>
+
+            <%= f.submit "💈 Create this Review 💈" %>
+
+        <br><br>
+
+
+    <!--  Time Spent and Enjoying Will Be Nil For Now  -  But We Can Spend Time Building Starting Functionality Ex: Someone Adding a stylist They've Been Doing Already for 12years 🤷🏾‍♂️ -->
+
+
+<% end %>
+
+
+
+<!-- 
+<%= form_with model: @user_stylist do |f| %>
+<%= f.label "haircut date" %><br>
+<%= f.date_field :haircut_date %><br>
+<%= f.label "stars out of 5" %><br>
+<%= f.number_field :stars, within: 1...6 %><br>
+<%= f.label "comment your hair stylist" %><br>
+<%= f.text_area :comment %><br>
+<%= f.label "services" %><br>
+<%= f.text_field :services %><br>
+<%= f.label "price" %><br>
+<%= f.number_field :price, step: :any %><br><br>
+
+<%= f.submit "Create Your Review"  %>
+<% end %> -->

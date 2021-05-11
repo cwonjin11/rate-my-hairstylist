@@ -1,24 +1,19 @@
 
-<h1> User_Stylist Details / Show page</h1>
+<h1> Review Details </h1>
 
 
-<ol>
+<ul>
 
 <li>
-Date : <i><%= @user_stylist.haircut_date %></i><br>
+Date : <i><span style="color:SlateBlue;font-weight:bold"> <%= @user_stylist.haircut_date %></i><br><br>
 <!-- got the stylist name here!! -->
-✄ Who was your hair stylist ? <%= @stylist.name  %><br>
-✄ Your Rating : <%= @user_stylist.stars %> out of 5 <br>
-✄ Comment : <%= @user_stylist.comment %> <br>
-✄ What service did you get ? <%= @user_stylist.services %> <br>
-✄ How much was it ? $<%= @user_stylist.price %> <br><br>
-
+✄ Hair Stylist Name : <span style="color:red;"> <%= @stylist.name  %> </span>  (💇🏻‍<%= link_to "Hair Stylist Info ☎", stylist_path(@stylist) %>)<br><br>
+✄ Rating : <span style="color:red;"> <%= @user_stylist.stars %> </span> out of 5  <br><br>
+✄ Service :  <span style="color:red;">  <%= @user_stylist.services %> </span><br><br>
+✄ Price : <span style="color:red;"> $<%= @user_stylist.price %> </span> <br><br>
+✄ Comment : <span style="color:green;"> <%= @user_stylist.comment %> </span> <br><br>
 <br><br>
-✄ <%= link_to "stylist info", stylist_path(@stylist) %>
-
-stylist_info : <%= @stylist.phone%> 
-
 <br><br>
 </li>
 
-<ol>
+<ul>
