@@ -9,7 +9,11 @@
     <!--  scope method for hairstylist average rating -->
     
      Name : <%= link_to stylist_name(stylist), stylist_path(stylist) %> <br>
-     Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>
+     Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
+     Total  : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
+
+     <!-- <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(stylist.user_stylists.size) %> -->
+
     </p>
 </li>
 <% end %>

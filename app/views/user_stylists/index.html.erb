@@ -7,10 +7,10 @@
 <% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
 <li>
 
-<span style="color:SlateBlue;font-weight:bold"> Date :  <i>   <%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i> </span> <br>
-✄ Who was your hair stylist ? <span style="color:red;">  <%= list_with_names user_stylist %> </span> <br>
-✄ Your Rating : <span style="color:red;">  <%= user_stylist.stars %> </span> out of 5 <br>
-✄ What service did you get ? <span style="color:green;">  <%= user_stylist.services %>  </span> <br>
+<span style="color:SlateBlue;font-weight:bold"> Date added :  <i>   <%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i> </span> <br>
+✄ Hairstylist Name : <span style="color:red;">  <%= list_with_names user_stylist %> </span> <br>
+✄ Rating : <span style="color:red;">  <%= user_stylist.stars %> </span> out of 5 <br>
+✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br>
 
 <!-- ✄ Comment : <%= user_stylist.comment %> <br>
 ✄ What service did you get ? <%= user_stylist.services %> <br>
@@ -33,9 +33,9 @@
 <li>
 
 <span style="color:SlateBlue;font-weight:bold"> Date : <i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i></span><br>
-✄ Who was your hair stylist ? <span style="color:red;"> <%= list_with_names user_stylist %> </span> <br>
-✄ Your Rating : <span style="color:red;"> <%= user_stylist.stars %> </span> out of 5 <br>
-✄ What service did you get ? <span style="color:green;"> <%= user_stylist.services %> </span> <br>
+✄ Hairstylist Name : <span style="color:red;"> <%= list_with_names user_stylist %> </span> <br>
+✄ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span> out of 5 <br>
+✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
 
 <% end %>
 
