@@ -3,10 +3,9 @@
 <h2> Name - Shop </h2>
 
 <ul>
-<% @stylists.each do |stylist| %>
+<% @stylists.order(created_at: :desc).each do |stylist| %>
 <li>
     <p>
-    
     <%= link_to stylist.name, stylist_path(stylist) %> working at <%= stylist.shop_name %><br>
     </p>
 </li>
