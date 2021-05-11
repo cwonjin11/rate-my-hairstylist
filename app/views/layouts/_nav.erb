@@ -12,10 +12,9 @@
         <li> 💥<%= link_to "Log Out", logout_path,  method: :delete %> 💥</li>
         <li> 🤯 <%= link_to "Main", user_path(@user) %> 🤯</li>
         <li>  🤩<%= link_to "Your Reviews", user_user_stylists_path(@user) %>  🤩 or
-        🤩<%= link_to "Add a Review", new_user_user_stylist_path(@user) %>  🤩
-        
-        </li>
+        🤩<%= link_to "Add a Review", new_user_user_stylist_path(@user) %>  🤩 </li>
         <li>  🤩<%= link_to "All Reviews", user_stylists_path %>  🤩</li>
+        <li>  🤩<%= link_to "All Hairstylists", stylists_path %>  🤩</li>
     
 <% end %>
 
