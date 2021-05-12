@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     def destroy
         # binding.pry
         @user.destroy
+        flash[:message] = "You've successfully deleted your account!"
         redirect_to users_path
 
     end
