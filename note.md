@@ -30,3 +30,8 @@ STYLIST
 <div class="github-button">
   <%= login_with_github %>
 </div>
+
+omniauth console:
+
+request.env['omniauth.auth']
+pp request.env['omniauth.auth']
