@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # get 'sessions/destroy'
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+####### OmniAuth #########
+
+# get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+get '/auth/:provider/callback', to: 'sessions#omniauth'
 
 
 ########   SESSIONS ROUTES  ### SIGN UP IS IN USER ROUTES ALREADY!! 
