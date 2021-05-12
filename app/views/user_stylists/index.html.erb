@@ -1,44 +1,48 @@
 
 <% if params[:user_id] %>
-<h2> You have total <span style="color:crimson;"> <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
 
-<ol>
+    <h2> You have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
+    
+    <ol>
+        <% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
+    <li> <span style="color:SlateBlue;font-weight:bold"> Date added :<i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i> </span> <br> 
+            ✄ Hairstylist Name : <span style="color:red;">  <%= list_with_names user_stylist %> </span> <br>
+            ✄ Rating : <span style="color:red;">  <%= user_stylist.stars %> </span> out of 5 <br>
+            ✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br><br><br>
+    </li>
+        <% end%>
+    </ol>
 
-<% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
-<li>
-
-<span style="color:SlateBlue;font-weight:bold"> Date added :  <i>   <%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i> </span> <br>
-✄ Hairstylist Name : <span style="color:red;">  <%= list_with_names user_stylist %> </span> <br>
-✄ Rating : <span style="color:red;">  <%= user_stylist.stars %> </span> out of 5 <br>
-✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br>
-
-<!-- ✄ Comment : <%= user_stylist.comment %> <br>
-✄ What service did you get ? <%= user_stylist.services %> <br>
-✄ How much was it ? $<%= user_stylist.price %> <br><br>
-
-###### instead of stylist ID, code ones name! ######<br>
-✄ user_id : <%= user_stylist.user_id %> <br>
-✄ stylist_id : <%= user_stylist.stylist_id %>  -->
-
-<br><br>
-</li>
-<% end%>
 
 <% else %>
-<h2> We have total <span style="color:crimson;"> <%= UserStylist.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
 
-<ol>
+    <h2> We have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
+    
+    <ol>
+    <% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
+     <li>
+        
+        <%if user_stylist.user_id == current_user.id %>
+            
+            <span style="color:red"> 
+            <b>Date : <i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i> 
+            </span>  <================== 👏 Your Review!! 👏 </b><br>
+            ✂️ Hairstylist Name : <span style="color:red;"> <%= list_with_names user_stylist %> </span> <br>
+            ✂️ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span> out of 5 <br>
+            ✂️ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
+            
 
-<% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
-<li>
+        <%else%>
 
-<span style="color:SlateBlue;font-weight:bold"> Date : <i><%= link_to user_stylist.haircut_date, user_user_stylist_path(@user, user_stylist) %></i></span><br>
-✄ Hairstylist Name : <span style="color:red;"> <%= list_with_names user_stylist %> </span> <br>
-✄ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span> out of 5 <br>
-✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
+            <span style="color:SlateBlue;font-weight:bold"> 
+            Date : <i><%= link_to user_stylist.haircut_date, user_stylist_path(user_stylist) %></i>
+            </span><br>
+            ✄ Hairstylist Name : <span style="color:red;"> <%= list_with_names user_stylist %> </span> <br>
+            ✄ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span> out of 5 <br>
+            ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
 
-<% end %>
+        <% end %>
+    <% end %>
+    </ol>
 
-<ol>
-
-<% end %>
+<% end %> 

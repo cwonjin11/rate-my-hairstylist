@@ -6,13 +6,16 @@ class UserStylistsController < ApplicationController
         if params[:user_id]
             @user_stylists = current_user.user_stylists 
         else
+            # binding.pry
             @user_stylists = UserStylist.all
+            # binding.pry
         end
     end
 
     def show
+        # binding.pry
         # @user_stylist = UserStylist.find_by_id(params[:id])   <==before action! go!
-
+# binding.pry
        params[:stylist_id_on_user_stylist] = @user_stylist.stylist_id
        @stylist = Stylist.find_by_id(params[:stylist_id_on_user_stylist]) 
         # binding.pry
