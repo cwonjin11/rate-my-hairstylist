@@ -45,13 +45,17 @@ class SessionsController < ApplicationController
           # binding.pry  #  Final Check!! 👀
         redirect_to user_path(@user)
     else
-        redirect_to login_path        #  redirect_to login_path
+      @errors = "Please check your username and password."
+        # flash[:message] = user.errors.full_messages.join(", ")
+        # redirect_to login_path    
+            render :new#  redirect_to login_path
     end
 
   end
 
 
   def login
+    
   end
 
   def destroy

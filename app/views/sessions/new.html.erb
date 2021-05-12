@@ -1,5 +1,11 @@
 <h1> Welcome to Rate My Hair Stylist!!! 🤩</h1><br>
 
+ <% if @errors %>
+    <p style="color: crimson;"> <b> <%= @errors %> </b> </p>
+  <% end %>
+
+
+
 <% User.all.each do |user| %>
 <li><%= user.username %></li>
 <% end %>
