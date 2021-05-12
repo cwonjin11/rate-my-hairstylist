@@ -1,13 +1,23 @@
-
-
 <h2>Here is your Info.</h2>
--------------------------------------------------
-<table>
+
+<head>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        }
+        th, td {
+        padding: 10px;
+        text-align: left;
+        }
+    </style>
+</head>
+
+<table style="width:25%">
   <thead>
     <tr>
       <th>Username</th>
       <th>email</th>
-      <th colspan="3"></th>
+      
     </tr>
   </thead>
 
@@ -15,10 +25,11 @@
       <tr>
         <td><%= current_user.username %></td>
         <td><%= current_user.email %></td>
+        
       </tr>
   </tbody>
 </table>
--------------------------------------------------
+
 <p>💁💫 <%= link_to "EDIT Your Profile", edit_user_path(@user) %> 💁💫</p>
 
 <br><br>
