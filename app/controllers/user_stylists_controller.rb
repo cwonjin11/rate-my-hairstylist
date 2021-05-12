@@ -62,7 +62,7 @@ class UserStylistsController < ApplicationController
     end
 
     def destroy
-        binding.pry
+        # binding.pry
         @user_stylist.destroy
         redirect_to user_user_stylists_path(@user)
     end
