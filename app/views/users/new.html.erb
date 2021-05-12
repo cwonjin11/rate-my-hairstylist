@@ -1,26 +1,14 @@
-
+<p style="color: crimson;"><b><%= flash[:message] %></b></p>
 <h1> Welcome to Rate My Hair Stylist!!! 🤩</h1><br>
 
 <h1>Please Sign UP!!</h1>
-<br>
-    <% if @user.errors.any? %>
-        <% @user.errors.full_messages.each do |error| %>
-        
-            <h4><p style="color: crimson;"><%= error %></h4>
-
-        <% end %>
-        
-    <% end %>
-<br>
-
-
 
 
 <%= form_with model: @user do |f| %>
 <%= f.label "Username" %><br>
 <%= f.text_field :username%><br>
 <%= f.label:email, "Email" %><br>
-<%= f.text_field :email %><br>
+<%= f.email_field :email %><br>
 <%= f.label "Password" %><br>
 <%= f.password_field :password %><br><br>
 
