@@ -15,10 +15,10 @@ class StylistsController < ApplicationController
   end
   def create
       @stylist = @user.stylists.build(stylist_params)
-      binding.pry
+      # binding.pry
         
     if @stylist.save
-      binding.pry
+      # binding.pry
         redirect_to new_user_user_stylist_path(@user)
     else
         render :new
