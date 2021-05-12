@@ -58,10 +58,11 @@ class SessionsController < ApplicationController
     
   end
 
-  def destroy
+  def destroy #log out
     session.clear
     # redirect_to 'login'
-    redirect_to login_path
+    flash[:message] = "👋🏻 #{@user.username.upcase}, You've logged out. See You Again! 👋🏻"
+    redirect_to welcome_path
   end
 
 
