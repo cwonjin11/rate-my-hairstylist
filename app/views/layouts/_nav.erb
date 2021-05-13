@@ -1,27 +1,33 @@
 <ul>
-    <br>
+<br>
 <% if !logged_in? %>
-    <li><%= button_to "Log in with Google", '/auth/google_oauth2' %></li>
-    <li><%= link_to "Sign Up", new_user_path %></li>
-    <li><%= link_to "Log In",  login_path    %></li>
+    <%= button_to "Log in with Google", '/auth/google_oauth2' %>
+    <%= link_to "Sign Up", signup_path %>   ||
+    <%= link_to "Log In",  login_path    %>
 
 <% else %>
 
-     <br>
-    <h1>   💇‍♂️  Hello, <%= current_user.username.upcase %>!  💇🏻‍♂️ ‍</h1>
-        <li> 💥<%= link_to "Log Out", logout_path,  method: :delete %> 💥</li>
-        <li> 🤯<%= link_to "Your Profile", user_path(@user) %>🤯</li>
-        <li>  🤩<%= link_to "Your Reviews", user_user_stylists_path(@user) %>🤩 or
-        🤩<%= link_to "Add a Review", new_user_user_stylist_path(@user) %>🤩 </li>
-        <li>  🤩<%= link_to "All Reviews", user_stylists_path %>🤩</li>
-        <li>  🤩<%= link_to "All Hairstylists", stylists_path %>🤩</li>
-    
+    <h1>   💇‍♂️  Hello,  <%= current_user.username.upcase %>!  💇🏻‍♂️ ‍</h1>
+
+     <!--   🤩<%= link_to "All Hairstylists", new_user_stylist_path(@user) %>🤩 || -->
+       
+      ||🤩<%= link_to "Your Reviews", user_user_stylists_path(@user) %>🤩 ||
+        
+        🤩<%= link_to "All Reviews", user_stylists_path %>🤩 ||
+        🤩<%= link_to "All Hairstylists", stylists_path %>🤩 ||
+
+        💇‍♂️ <%= link_to "🤯Add a Hairstylist 🤯", new_stylist_path %> 💆‍♂️ ||
+        🤩<%= link_to "Add a Review", new_user_user_stylist_path(@user) %>🤩  ||
+
+
+        🤯<%= link_to "Your Profile", user_path(@user) %>🤯 ||
+        💥<%= link_to "Log Out", logout_path,  method: :delete %> 💥 ||
 <% end %>
 
 </ul>
 
+<hr>
 
 
-----------------------------------------------------------------------------------------------------------------
 
 <br><br>
