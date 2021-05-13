@@ -62,7 +62,7 @@ class SessionsController < ApplicationController
     session.clear
     # redirect_to 'login'
     flash[:message] = "👋🏻 #{@user.username.upcase}, You've logged out. See You Again! 👋🏻"
-    redirect_to welcome_path
+    redirect_to root_path
   end
 
 
