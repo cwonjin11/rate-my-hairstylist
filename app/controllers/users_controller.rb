@@ -9,6 +9,8 @@ class UsersController < ApplicationController
         @users = User.all
     end
     def show
+        redirect_to root_path if !@user
+        #  binding.pry#make user not to show rails error pages. 
         # binding.pry
     end
 
@@ -19,7 +21,6 @@ class UsersController < ApplicationController
     end
     def create 
         @user = User.new(user_params)
-        
         if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
@@ -35,7 +36,6 @@ class UsersController < ApplicationController
 
 
     def edit
-
     end
     def update
         # binding.pry
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
         # binding.pry
         @user.destroy
         flash[:message] = "You've successfully deleted your account!"
-        redirect_to users_path
+        redirect_to root_path
 
     end
 
