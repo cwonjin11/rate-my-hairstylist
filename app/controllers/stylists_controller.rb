@@ -1,11 +1,15 @@
 class StylistsController < ApplicationController
+  before_action :find_stylist, only: [:show]
+
+
   def index
     # binding.pry
       @stylists = Stylist.all
+      @most_reviews = Stylist.most_reviews
+      # @high_rated_hairstylists = Stylist.stars_more_than(3)
+      # @more_than_4_stars = Stylist.more_than_4_stars
   end
   def show
-    # binding.pry
-      @stylist = Stylist.find_by_id(params[:id])
   end
 
 
@@ -14,13 +18,18 @@ class StylistsController < ApplicationController
       @stylist = Stylist.new
   end
   def create
-      @stylist = @user.stylists.build(stylist_params)
-      # binding.pry
+
+      @stylist = Stylist.new(stylist_params)
+      binding.pry
         
     if @stylist.save
-      # binding.pry
+      binding.pry
+      flash[:message] = "You've seccessfully created a new Hairstylist named #{@stylist.name.upcase}."
         redirect_to new_user_user_stylist_path(@user)
     else
+
+        flash[:message] = @stylist.errors.full_messages.join(", ")
+        binding.pry
         render :new
     end
 
@@ -55,6 +64,10 @@ end
 
 
 private 
+
+def find_stylist
+  @stylist= Stylist.find_by_id(params[:id])
+end
 
 def stylist_params
   #in our params, we wanna require who? (stylist!), and permit what? (attributes)
