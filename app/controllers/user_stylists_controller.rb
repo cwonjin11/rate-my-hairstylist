@@ -12,6 +12,8 @@ class UserStylistsController < ApplicationController
             # binding.pry
         end
     end
+
+    
     def show
         # binding.pry
         # @user_stylist = UserStylist.find_by_id(params[:id])   <==before action! go!
