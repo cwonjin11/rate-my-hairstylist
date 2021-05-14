@@ -1,10 +1,10 @@
-<p style="color: crimson;"><b><%= flash[:message] %></b></p>
+
 <h1> Welcome to Rate My Hair Stylist!!! 🤩</h1><br>
 
 <h1>Please Sign UP!!</h1>
 
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @user, url: '/signup' do |f| %>
 <%= f.label "Username" %><br>
 <%= f.text_field :username%><br>
 <%= f.label:email, "Email" %><br>
