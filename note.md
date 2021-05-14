@@ -35,3 +35,34 @@ omniauth console:
 
 request.env['omniauth.auth']
 pp request.env['omniauth.auth']
+
+
+
+
+
+<!-- 
+<hr>
+<h4> Highly-rated Hairstylists !! </h4>
+    <ul>
+        <% @more_than_4_stars.each do |review| %>
+        <li><%= link_to review.name, stylist_path(review) %>  <%= review.hairstylist_rating %>
+        stars </li>
+        <% end %>
+    </ul>
+<hr> -->
+
+
+<!--<%= f.collection_check_boxes :stylist_id, Stylist.all, :id, :name %>   -->
+
+<!-- <%= f.label :stylist_name, "who was your hair stylist? " %>
+<%= f.text_field :stylist_name, placeholder: @stylist.name %><br> -->
+
+
+<!-- <hr>
+    <h4>High-rated Reviews (more than 4 stars)</h4>
+    <ul>
+       <% @high_rated_hairstylists.each do |hairstylist| %>
+       <li> <%=link_to hairstylist.name, stylist_path(hairstylist) %> <%= hairstylist.average_rating %> </li>
+    <% end %>
+    </ul>
+<hr> -->
