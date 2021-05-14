@@ -15,11 +15,9 @@ class UserStylistsController < ApplicationController
 
     
     def show
-        # binding.pry
         # @user_stylist = UserStylist.find_by_id(params[:id])   <==before action! go!
-# binding.pry
-       params[:stylist_id_on_user_stylist] = @user_stylist.stylist_id
-       @stylist = Stylist.find_by_id(params[:stylist_id_on_user_stylist]) 
+        # binding.pry
+        find_stylist_id_on_user_stylist
         # binding.pry
     end
 
@@ -28,9 +26,7 @@ class UserStylistsController < ApplicationController
         # @stylist = UserStylist.find(params[:id])
         # binding.pry
         @user_stylist = @user.user_stylists.new
-
-        params[:stylist_id_on_user_stylist] = @user_stylist.stylist_id
-        @stylist = Stylist.find_by_id(params[:stylist_id_on_user_stylist]) 
+        find_stylist_id_on_user_stylist
         # binding.pry
         # @user_stylist.stylists.build
         # @user.user_stylists.stylist.build
@@ -65,9 +61,9 @@ class UserStylistsController < ApplicationController
         if @user_stylist.user_id != current_user.id
             redirect_to user_stylist_path(@user_stylist)
         end
-            params[:stylist_id_on_user_stylist] = @user_stylist.stylist_id
-            @stylist = Stylist.find_by_id(params[:stylist_id_on_user_stylist]) 
+        find_stylist_id_on_user_stylist
     end
+
     def update
         @user_stylist.update(user_stylist_params)
         # binding.pry
@@ -79,6 +75,7 @@ class UserStylistsController < ApplicationController
     def destroy
         # binding.pry
         @user_stylist.destroy
+        flash[:message] = "Your review has been deleted! "
         redirect_to user_user_stylists_path(@user)
     end
 
@@ -92,6 +89,13 @@ class UserStylistsController < ApplicationController
     def find_user_stylist
         @user_stylist= UserStylist.find_by_id(params[:id])
     end
+
+
+    def find_stylist_id_on_user_stylist
+        params[:stylist_id_on_user_stylist] = @user_stylist.stylist_id
+        @stylist = Stylist.find_by_id(params[:stylist_id_on_user_stylist]) 
+    end
+
 
     def user_stylist_params
         params.require(:user_stylist).permit(:haircut_date, :stars, :comment, 
