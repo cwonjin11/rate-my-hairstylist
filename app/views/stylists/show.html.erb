@@ -12,15 +12,16 @@
     <li>Phone ☎️ : <%= @stylist.phone %></li>
     <li>Shop Name : <span style="color:red;"> <%= @stylist.shop_name %> </span> </li>
     <li>Address : <span style="color:green;">  <%= @stylist.address %></span></li>
-    <li>Overall Rating : <%= @stylist.average_rating %>
+    <li>Overall Rating : <%= @stylist.average_rating %> / 5.0
     <br>
      <br>
 </ul>
-
-   <h3> Total <%= @stylist.user_stylists.size %> <%= "review".pluralize(@stylist.user_stylists.size) %></h3> 
-    <ul class="a">
+    <h2>✂️ CUSTOMER  REVIEWS  FOR  ❝ <%= @stylist.name.upcase %> ❞ ✂️ </h2>
+        <h3> Total <%= @stylist.user_stylists.size %> <%= pluralize_without_count(@stylist.user_stylists.count, 'review', ':') %></h3> 
+ 
+    <ul class="a"> 
             <% @stylist.user_stylists.each do |all_comments| %>
-                <li>🤔 Comment 🤔 : "<%= all_comments.comment %>" .... by <b>"<%= all_comments.user.username %>"</b></li>
-                    ⭐️ Rating ⭐️ : <%= all_comments.stars %>
+                <li> <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %> </li>
+                    ⭐️ Rating ⭐️ : <%= all_comments.stars %> / 5
             <% end %>
     </ul>
