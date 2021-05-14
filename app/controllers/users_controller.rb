@@ -9,16 +9,16 @@ class UsersController < ApplicationController
         @users = User.all
     end
     def show
-        redirect_to root_path if !@user
-        #  binding.pry#make user not to show rails error pages. 
-        # binding.pry
+        prevent_user
     end
 
 
 
+    #### sign up ###
     def new 
         @user = User.new
     end
+
     def create 
         @user = User.new(user_params)
         if @user.save
@@ -30,17 +30,17 @@ class UsersController < ApplicationController
         end
 
     end
-    
+    ###############
 
 
 
 
     def edit
-    end
+        prevent_user
+    end 
+
     def update
-        # binding.pry
         @user.update(user_params)
-        # binding.pry
         redirect_to user_path(@user)
             #YOU CAN ALSO DO THIS: redirect_to @user 
 
@@ -48,7 +48,6 @@ class UsersController < ApplicationController
 
 
     def destroy
-        # binding.pry
         @user.destroy
         flash[:message] = "You've successfully deleted your account!"
         redirect_to root_path
@@ -69,6 +68,13 @@ class UsersController < ApplicationController
         #in our params, we wanna require who? (user!), and permit what? (attributes)
         params.require(:user).permit(:username, :email, :password) 
 
+    end
+
+    def prevent_user
+        if current_user.id != params[:id].to_i
+            flash[:message] = " Something went wrong here. Please try again! "
+            redirect_to root_path
+        end
     end
 
 end
