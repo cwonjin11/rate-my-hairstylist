@@ -11,8 +11,20 @@
   </head>
 
   <body>
+    <div>
 
-    <%= render 'layouts/nav' %>
+      <%= render 'layouts/nav' %>
+    
+    </div>
+
+
+    <div>
+
+      <% if flash[:message] %>
+          <p style="color: crimson;"><b><%= flash[:message] %></b></p>
+      <% end %>
+    
+    </div>
 
     <%= yield %>
 
