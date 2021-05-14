@@ -1,16 +1,18 @@
 <h1>Edit <%= current_user.username %> </h1>
 
 
-<%= form_with model: current_user do |f| %>
+    <%= form_with model: current_user do |f| %>
 
-<%= f.label "Username" %>
-<%= f.text_field :username, placeholder: current_user.username%><br>
+    <%= f.label "Username" %>
+    <%= f.text_field :username, placeholder: current_user.username%><br>
 
-<%= f.label "Email" %>
-<%= f.email_field :email, placeholder: current_user.email%><br><br>
+    <%= f.label "Email" %>
+    <%= f.email_field :email, placeholder: current_user.email%><br><br>
 
-<%= f.submit "let's edit this user 😜"%>
+    <%= f.submit "let's edit this user 😜"%>
 
-or 🤷 <%= link_to "DELETE Your Account", @user, method: :delete %> 🤷</p>
-<%end%>
+    or 🤷 <%= link_to "DELETE Your Account", @user, method: :delete %> 🤷</p>
+
+
+<% end %>
 

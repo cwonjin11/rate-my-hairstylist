@@ -18,18 +18,17 @@ class StylistsController < ApplicationController
       @stylist = Stylist.new
   end
   def create
-
+    # binding.pry
       @stylist = Stylist.new(stylist_params)
-      binding.pry
+      # binding.pry
         
     if @stylist.save
-      binding.pry
-      flash[:message] = "You've seccessfully created a new Hairstylist named #{@stylist.name.upcase}."
+      # binding.pry
+        flash[:message] = "You've seccessfully created a new Hairstylist named #{@stylist.name.upcase}."
         redirect_to new_user_user_stylist_path(@user)
     else
-
         flash[:message] = @stylist.errors.full_messages.join(", ")
-        binding.pry
+        # binding.pry
         render :new
     end
 
