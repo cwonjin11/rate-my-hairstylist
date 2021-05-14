@@ -3,10 +3,15 @@ class Stylist < ApplicationRecord
     has_many :users, through: :user_stylists
 
    
-    validates_presence_of :name, :phone, :shop_name, :address
-    validates_uniqueness_of :name, :phone
+    validates_presence_of :name, :shop_name, :address
+    validates :phone, phone: true
 
-    
+    validates :name, uniqueness: { case_sensitive: false }
+  
+
+    # def downcase_name
+    #   self.name = self.name.try(:downcase)
+    # end
 
     #### scope method ####
     #hair stylist average rating#
