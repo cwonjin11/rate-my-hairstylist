@@ -1,0 +1,37 @@
+<%= form_with model: @user_stylist do |f| %> 
+        Who was your hairstylist ?
+   <%= f.collection_select :stylist_id, Stylist.order('created_at DESC').all, :id, :name, 
+    {:prompt => true} %> <br>
+
+<br>
+        <!-- or→ <%= link_to "🤯Create a New Hair Stylist🤯", new_stylist_path %> <br><br> -->
+       <br>
+
+
+
+
+
+        <%= f.label :haircut_date, "What date did you get your hair cut? " %>
+        <%= f.date_field :haircut_date %><br>
+        <%= f.label :rating, "Let's rate your hair stylist! " %>
+        <%= f.select(:stars, options_for_select([
+            ["1", 1],
+            ["2", 2],
+            ["3", 3],
+            ["4", 4],
+            ["5", 5]
+            ])) %> <br>
+        <%= f.label :services, "men's haircuts? women's hair cut? kids? perm? dying? " %>
+        <%= f.text_field :services %><br>
+        <%= f.label :price, "How much did you pay for? " %>
+        <%= f.number_field :price, step: :any %><br><br>
+        <%= f.label :comment, "Please share your experience! " %>
+        <%= f.text_area :comment %><br>
+    
+
+
+    
+        <br><br>
+
+            <%= f.submit "submit", :class => "button"%>
+<% end %>

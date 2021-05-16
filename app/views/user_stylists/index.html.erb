@@ -11,7 +11,7 @@
             <span style="color:SlateBlue;font-weight:bold"> 
                 Date added :<i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %></i> 
             </span> <br>
-                ✄ Hairstylist Name : <span style="color:red;">  <%= list_with_names user_stylist %> </span> <br>
+                ✄ Hairstylist Name : <span style="color:red;">  <%= user_stylist.stylist.name %> </span> <br>
                 ✄ Rating : <span style="color:red;">  <%= user_stylist.stars %> </span>/5 <br>
                 ✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br>
         </li>
@@ -34,7 +34,7 @@
             <% @high_rated_hairstylists.each do |hairstylist| %>
                 <li> 
                     <span style="color:SlateBlue;font-weight:bold"> 
-                         <%=list_with_names hairstylist %>
+                         <%=hairstylist.stylist.name %>
                     </span>, <%= hairstylist.stars %> stars<br>
                      <b><%= hairstylist.user.username %></b> says, <%= hairstylist.comment %> 
                 </li>
