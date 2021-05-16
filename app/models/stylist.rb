@@ -4,12 +4,15 @@ class Stylist < ApplicationRecord
 
    
     validates_presence_of :name, :shop_name, :address
-    validates :phone, phone: true
-
+    validates :phone, :presence => true, :phone => true
+    
+    ##### make upcase, downcase as the same name #####
     validates :name, uniqueness: { case_sensitive: false }
+    validates_uniqueness_of :phone, :case_sensitive => false
   
 
-    # def downcase_name
+
+    # def downcase_name  => don't need bc i have validation instead
     #   self.name = self.name.try(:downcase)
     # end
 
@@ -55,4 +58,10 @@ class Stylist < ApplicationRecord
 
       # scope :stars_more_than, ->(amount) { where("price > ?", amount) }
 
+
+
+
+      # def self.find_by_name(letter)
+      #   where('name LIKE ?', "#{letter}%").order('name ASC')
+      # end
 end

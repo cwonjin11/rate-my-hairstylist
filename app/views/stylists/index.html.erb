@@ -1,35 +1,33 @@
-<h1> Here are all the hairstylists' information and their ratings !! </h1>
-<h2> We have total <span style="color:crimson;"> <%= @stylists.size %> </span> <%= "hairstylist".pluralize(@stylists.size) %> </h2>
 
-<hr>
-  <h4> Most Reviewed Hairstylists!! </h4>
-    <ul>
+
+  <h3> Most Reviewed Hairstylists!! </h3>
+    <ol>
       <% @most_reviews.each do |hairstylist| %>
       <li><%= link_to hairstylist.name, stylist_path(hairstylist) %> <span class="right"> <%= hairstylist.user_stylists.count %> reviews </span></li>
       <% end %>
-    </ul>
+    </ol>
 <hr>
 
 
+<h2> We have total <span style="color:crimson;"> <%= @stylists.size %> </span> <%= "hairstylist".pluralize(@stylists.size) %> </h2>
 
-<ul>
+  <ul class="split">
+  <!-- all hairlists list -->
+      <% @stylists.order(created_at: :desc).each do |stylist| %>
+        <li>
+            <p>
+            <!-- ### hairstylist average rating### -->
+            Name : ✂️<%= link_to stylist.name, stylist_path(stylist) %>✂️ <br>
+            Average Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
+            Total reviews : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
 
+            <!-- <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(stylist.user_stylists.size) %> -->
 
-<% @stylists.order(created_at: :desc).each do |stylist| %>
-<li>
-    <p>
-    <!-- ### hairstylist average rating### -->
-     Name : ✂️<%= link_to stylist.name, stylist_path(stylist) %>✂️ <br>
-     Average Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
-     Total reviews : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
+            </p>
+        </li>
+      <% end %>
 
-     <!-- <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(stylist.user_stylists.size) %> -->
-
-    </p>
-</li>
-<% end %>
-
-</ul>
+  </ul>
 
 
 

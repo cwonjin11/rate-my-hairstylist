@@ -4,7 +4,9 @@ class StylistsController < ApplicationController
 
   def index
     # binding.pry
+    
       @stylists = Stylist.all
+      # @stylists = Stylist.find_by_name('a')     # << LIVE CODE PRACTICE : Show only stylist name starts with (a)
       @most_reviews = Stylist.most_reviews
       # @high_rated_hairstylists = Stylist.stars_more_than(3)
       # @more_than_4_stars = Stylist.more_than_4_stars
