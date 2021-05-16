@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
     def current_user
         @user = User.find_by_id(session[:user_id]) 
+        
         #or 
         # @user ||= User.find_by_id(session[:user_id]) 
         # if the user is @user ||= (or, if there's no user set user as) User.find_by_id(session[:user_id])
@@ -19,9 +20,9 @@ class ApplicationController < ActionController::Base
 
 
     def logged_in?
+        # !!session[:user_id]
         !current_user.nil? #.nil means "is this nil?"
         #  current_user != nil
-        
         ##    !    <<<<{Will Be Negated}<<<<    (  (current_user.nil?) = TRUE  )
     end 
 
@@ -31,5 +32,6 @@ class ApplicationController < ActionController::Base
           redirect_to root_path
         end
     end
+
 
 end
