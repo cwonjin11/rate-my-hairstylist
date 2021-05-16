@@ -145,7 +145,8 @@ GEM
     omniauth-rails_csrf_protection (1.0.0)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-    phonelib (0.6.50)
+    phone-validator (0.0.2)
+      activemodel (>= 3)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -261,7 +262,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
-  phonelib
+  phone-validator
   pry
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
