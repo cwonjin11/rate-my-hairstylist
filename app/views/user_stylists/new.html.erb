@@ -1,24 +1,27 @@
-<h1> Rate your hair stylist here! </h1>
+<h2> Rate your hairstylist here! </h2>
 
-<%= form_with model: @user_stylist do |f| %>
-    <!-- <%= f.collection_select :user_id, User.all, :id, :username %> -->
-    
-        Who was your hairstylist ?
+<%= form_with model: @user_stylist do |f| %> 
+   Who was your hairstylist ?
+   <%= f.collection_select :stylist_id, Stylist.order('created_at DESC').all, :id, :name, 
+    {:prompt => true} %> <br> </li>
+
+       or→ <%= link_to "🤯Create a New Hair Stylist🤯", new_stylist_path %> <br><br>
+       <br>
+
+   <!-- <h3> or create a new hairstylist </h3>
+    <%= f.fields_for :stylist_attributes  do |ff| %>
+                <%= ff.label :name %>
+                <%= ff.text_field :name %><br>
+                <%= ff.label :phone %>
+                <%= ff.text_field :phone %><br>
+                <%= ff.label :shop_name %>
+                <%= ff.text_field :shop_name %><br>
+                <%= ff.label :address %>
+                <%= ff.text_field :address %><br>
+         <% end %><br> -->
 
 
-    <!--<%= f.collection_check_boxes :stylist_id, Stylist.all, :id, :name %>   -->
-
-   <%= f.collection_select :stylist_id, Stylist.order('created_at DESC'), :id, :name, 
-    {:prompt => 'Please select the stylist'} %> <br>
-         or→ <%= link_to "🤯Create a New Hair Stylist🤯", new_stylist_path %> <br><br>
-       
-    <!--  <%= f.fields_for :stylists  do |ff| %>
-       <%= ff.text_field :name %>
-         <% end %><br>  -->
-
-
-
-
+<br>
         <%= f.label :haircut_date, "What date did you get your hair cut? " %>
         <%= f.date_field :haircut_date %><br>
         <%= f.label :rating, "Let's rate your hair stylist! " %>
@@ -46,9 +49,7 @@
         <br><br>
 
 
-    <!--  Time Spent and Enjoying Will Be Nil For Now  -  But We Can Spend Time Building Starting Functionality Ex: Someone Adding a stylist They've Been Doing Already for 12years 🤷🏾‍♂️ -->
-
-
+</ul>
 <% end %>
 
 

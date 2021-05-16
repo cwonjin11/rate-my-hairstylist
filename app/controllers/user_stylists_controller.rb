@@ -1,5 +1,5 @@
 class UserStylistsController < ApplicationController
-    before_action :find_user_stylist,  only: [:index, :show, :edit, :update, :destroy]
+    before_action :find_user_stylist,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     def index 
         if params[:user_id]
@@ -7,6 +7,8 @@ class UserStylistsController < ApplicationController
         else
             # binding.pry
             @user_stylists = UserStylist.all
+            
+            # binding.pry
             ### scope :stars_more_than   ==>  only 4 or 5 stars will be displayed ###
             @high_rated_hairstylists = UserStylist.stars_more_than(4) 
             # binding.pry
@@ -23,32 +25,43 @@ class UserStylistsController < ApplicationController
 
 
     def new
-        # @stylist = UserStylist.find(params[:id])
-        # binding.pry
-        @user_stylist = @user.user_stylists.new
-        find_stylist_id_on_user_stylist
-        # binding.pry
-        # @user_stylist.stylists.build
-        # @user.user_stylists.stylist.build
-        # binding.pry
+        
+        @user_stylist = current_user.user_stylists.build
+        @user_stylist.build_stylist
+        
+        
+      
     end
+
     def create 
-
-        @user_stylist = @user.user_stylists.build(user_stylist_params)
-                # binding.pry 
-        # @user_stylist = current_user.user_stylists.build(user_stylist_params)
-    # binding.pry
-        # Can Only Save If Valid
-
-        if @user_stylist.save
-                # binding.pry  #  Final Check!! 👀
-            flash[:message] = "Your review with hairstylist name #{@user_stylist.stylist.name.upcase} has been created! "
-            redirect_to user_user_stylist_path(@user, @user_stylist) #  /user/:id
+        # binding.pry
+        # find_stylist_id_on_user_stylist
+        @user_stylist = current_user.user_stylists.build(user_stylist_params)
+        # if @user_stylist.stylist
+        # if @user_stylist.stylist_id != nil
+            # binding.pry
+        if  @user_stylist.save
+            # binding.pry
+            # flash[:message] = "Your review with hairstylist #{@user_stylist.stylist.name.upcase} has been created"
+            redirect_to user_user_stylist_path(@user, @user_stylist)
             
         else
-            # binding.pry
             flash[:message] = @user_stylist.errors.full_messages.join(", ")
-            redirect_to new_user_user_stylist_path(@user)
+            # if @user_stylist.stylist_id == nil 
+
+            #     flash[:message] = "please select hairstylist"
+
+            # elsif 
+
+            # else
+            #     # binding.pry
+            #     flash[:message] = @user_stylist.errors.full_messages.join(", ")
+
+
+            # end
+            # flash[:message] = @user_stylist.errors.full_messages.join(", ")
+            # flash[:message] = @user_stylist.stylist.errors.full_messages.join(", ")
+            render :new
         end
         
 
@@ -56,10 +69,17 @@ class UserStylistsController < ApplicationController
 
 
 
+
+
+
+
     def edit
         # binding.pry
         if @user_stylist.user_id != current_user.id
-            redirect_to user_stylist_path(@user_stylist)
+            # binding.pry
+            flash[:message] = " Something went wrong here. Please try again! "
+            redirect_to root_path
+        
         end
         find_stylist_id_on_user_stylist
     end
@@ -99,7 +119,17 @@ class UserStylistsController < ApplicationController
 
     def user_stylist_params
         params.require(:user_stylist).permit(:haircut_date, :stars, :comment, 
-            :services, :price, :user_id, :stylist_id)
+            :services, :price, :user_id, :stylist_id, 
+            stylist_attributes:[:name, :phone, :shop_name, :address]
+        )
     end 
+
+    # def stylist_params
+    #     params.require(:user_stylist).permit(stylists_attributes: [
+    #         :name,
+    #         :phone,
+    #         :shop_name,
+    #         :address])
+    # end
 
 end

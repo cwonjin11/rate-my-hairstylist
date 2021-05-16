@@ -2,12 +2,12 @@
 <h1> Review Details </h1>
 
 
-<ul>
+<ul class="a">
 
 <li>
-    Date : <i><span style="color:SlateBlue;font-weight:bold"> <%= @user_stylist.haircut_date %></i><br><br>
+    Date : <i><span style="color:SlateBlue;font-weight:bold"> <%= @user_stylist.haircut_date.strftime("%m/%d/%Y") %></i><br><br>
     <!-- got the stylist name here!! -->
-    ✄ Hair Stylist Name : <span style="color:red;"> <%= @user_stylist.stylist.name  %> </span>  (💇🏻‍<%= link_to "Hair Stylist Info ☎", stylist_path(@stylist) %>)<br><br>
+    ✄ Hair Stylist Name : <span style="color:red;"> <%= @user_stylist.stylist.name  %> </span>  (💇🏻‍<%= link_to "Hairstylist Info ☎", stylist_path(@stylist) %>)<br><br>
     ✄ Rating : <span style="color:red;"> <%= @user_stylist.stars %> </span> out of 5  <br><br>
     ✄ Service :  <span style="color:red;">  <%= @user_stylist.services %> </span><br><br>
     ✄ Price : <span style="color:red;"> $<%= @user_stylist.price %> </span> <br><br>
@@ -15,9 +15,9 @@
     ✄ Written by (username): <span style="color:blue;"> <%= @user_stylist.user.username %> </span> <br><br>
 </li>
 
-<ul>
+</ul>
 <%if params[:user_id] && @user_stylist.user_id = current_user.id %>
 
-    💁💫 <%= link_to "EDIT Your Review", edit_user_user_stylist_path(@user, @user_stylist) %> 💁💫
-
+   <!-- 💁💫 <%= link_to "EDIT Your Review", edit_user_user_stylist_path(@user, @user_stylist) %> 💁💫 -->
+  <%= button_to "Edit your review",  edit_user_user_stylist_path(@user, @user_stylist), :class => "button", :method => :get  %>
 <%end %>
