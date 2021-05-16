@@ -16,7 +16,7 @@
 </li>
 
 </ul>
-<%if params[:user_id] && @user_stylist.user_id = current_user.id %>
+<%if params[:user_id] && @user_stylist.user_id == current_user.id %>
 
    <!-- 💁💫 <%= link_to "EDIT Your Review", edit_user_user_stylist_path(@user, @user_stylist) %> 💁💫 -->
   <%= button_to "Edit your review",  edit_user_user_stylist_path(@user, @user_stylist), :class => "button", :method => :get  %>

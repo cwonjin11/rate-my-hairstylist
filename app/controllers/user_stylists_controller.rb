@@ -3,10 +3,11 @@ class UserStylistsController < ApplicationController
 
     def index 
         if params[:user_id]
-            @user_stylists = current_user.user_stylists 
+            @user_stylists = current_user.user_stylists.order(created_at: :desc) 
+            # binding.pry
         else
             # binding.pry
-            @user_stylists = UserStylist.all
+            @user_stylists = UserStylist.all.order(created_at: :desc)
             
             # binding.pry
             ### scope :stars_more_than   ==>  only 4 or 5 stars will be displayed ###
@@ -81,14 +82,22 @@ class UserStylistsController < ApplicationController
             redirect_to root_path
         
         end
-        find_stylist_id_on_user_stylist
+        # find_stylist_id_on_user_stylist
     end
 
     def update
-        @user_stylist.update(user_stylist_params)
         # binding.pry
+        if @user_stylist.update(user_stylist_params)
+            # binding.pry
         flash[:message] = "Your review has been updated! "
         redirect_to user_user_stylist_path(@user, @user_stylist)
+        else
+            # binding.pry
+        flash[:message] = @user_stylist.errors.full_messages.join(", ")
+        render :edit
+
+        end
+
         
     end
 
@@ -119,9 +128,7 @@ class UserStylistsController < ApplicationController
 
     def user_stylist_params
         params.require(:user_stylist).permit(:haircut_date, :stars, :comment, 
-            :services, :price, :user_id, :stylist_id, 
-            stylist_attributes:[:name, :phone, :shop_name, :address]
-        )
+            :services, :price, :user_id, :stylist_id)
     end 
 
     # def stylist_params

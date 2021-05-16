@@ -6,7 +6,8 @@
     <h2> You have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
     
     <ul class="a">
-        <% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
+      
+        <% @user_stylists.each do |user_stylist| %>
          <li>
             <span style="color:SlateBlue;font-weight:bold"> 
                 Date added :<i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %></i> 
@@ -49,7 +50,7 @@
    
    <!-- Your reviews in ALL reviews --> 
     <ul class="split">
-        <% @user_stylists.order(created_at: :desc).each do |user_stylist| %>
+        <% @user_stylists.each do |user_stylist| %>
             <li>
         
                 <%if user_stylist.user_id == current_user.id %>
