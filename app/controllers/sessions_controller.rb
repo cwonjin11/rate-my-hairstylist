@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
        redirect_to user_path(user)
     else
       flash[:message] = user.errors.full_messages.join(", ")
-      redirect_to welcome_path
+      redirect_to root_path
     end
   end
   
