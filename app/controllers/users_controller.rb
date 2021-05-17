@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to pages_path
         else
             flash[:message] = @user.errors.full_messages.join(", ")
             render :new
@@ -40,8 +40,13 @@ class UsersController < ApplicationController
     end 
 
     def update
-        @user.update(user_params)
+        if @user.update(user_params)
         redirect_to user_path(@user)
+        else
+            # binding.pry
+        flash[:message] = @user.errors.full_messages.join(", ")
+        render :edit
+        end
             #YOU CAN ALSO DO THIS: redirect_to @user 
 
     end
@@ -71,6 +76,7 @@ class UsersController < ApplicationController
     end
 
     def prevent_user
+        # binding.pry
         if current_user.id != params[:id].to_i
             flash[:message] = " Something went wrong here. Please try again! "
             redirect_to root_path
