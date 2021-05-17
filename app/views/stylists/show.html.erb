@@ -1,27 +1,25 @@
+
 <h1>✂️ <%= @stylist.name %> details ✂️</h1>
+    
+    <ul>
+        <li>Name : <span style="color:SlateBlue;font-weight:bold"> <%= @stylist.name %> </span><br>
+        Phone ☎️ : <%= @stylist.phone %><br>
+        Shop Name : <span style="color:red;"> <%= @stylist.shop_name %> </span> <br>
+        Address : <span style="color:green;">  <%= @stylist.address %></span><br>
+        Overall Rating : <%= @stylist.average_rating %> / 5.0 <br>
+        </li>
+        <br>
+    </ul>
 
-<head>
-    <style>
-        ul.a {list-style-type: square;}
-    </style>
-</head>
 
-<ul>
 
-    <li>Name : <span style="color:SlateBlue;font-weight:bold"> <%= @stylist.name %> </spna></li>
-    <li>Phone ☎️ : <%= @stylist.phone %></li>
-    <li>Shop Name : <span style="color:red;"> <%= @stylist.shop_name %> </span> </li>
-    <li>Address : <span style="color:green;">  <%= @stylist.address %></span></li>
-    <li>Overall Rating : <%= @stylist.average_rating %> / 5.0
-    <br>
-     <br>
-</ul>
-    <h2>✂️ CUSTOMER  REVIEWS  FOR  ❝ <%= @stylist.name.upcase %> ❞ ✂️ </h2>
+<h2>✂️ CUSTOMER  REVIEWS  FOR  ❝ <%= @stylist.name.upcase %> ❞ ✂️ </h2>
         <h3> Total <%= @stylist.user_stylists.size %> <%= pluralize_without_count(@stylist.user_stylists.count, 'review', ':') %></h3> 
  
-    <ul class="a"> 
-            <% @stylist.user_stylists.each do |all_comments| %>
-                <li> <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %> </li>
-                    ⭐️ Rating ⭐️ : <%= all_comments.stars %> / 5
-            <% end %>
+    <ul> 
+        <% @stylist.user_stylists.each do |all_comments| %>
+            <li> <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %> <br>
+                ⭐️ Rating ⭐️ : <%= all_comments.stars %> / 5<br>
+            </li>
+        <% end %>
     </ul>

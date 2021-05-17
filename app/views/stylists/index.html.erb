@@ -1,19 +1,11 @@
 
 
-  <h3> Most Reviewed Hairstylists!! </h3>
-    <ol>
-      <% @most_reviews.each do |hairstylist| %>
-      <li><%= link_to hairstylist.name, stylist_path(hairstylist) %> <span class="right"> <%= hairstylist.user_stylists.count %> reviews </span></li>
-      <% end %>
-    </ol>
-<hr>
-
 
 <h2> We have total <span style="color:crimson;"> <%= @stylists.size %> </span> <%= "hairstylist".pluralize(@stylists.size) %> </h2>
 
   <ul class="split">
   <!-- all hairlists list -->
-      <% @stylists.order(created_at: :desc).each do |stylist| %>
+      <% @stylists.each do |stylist| %>
         <li>
             <p>
             <!-- ### hairstylist average rating### -->
