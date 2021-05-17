@@ -11,7 +11,7 @@ class UserStylistsController < ApplicationController
             
             # binding.pry
             ### scope :stars_more_than   ==>  only 4 or 5 stars will be displayed ###
-            @high_rated_hairstylists = UserStylist.stars_more_than(4) 
+            # @high_rated_hairstylists = UserStylist.stars_more_than(4) #<=== moved to pages path
             # binding.pry
         end
     end

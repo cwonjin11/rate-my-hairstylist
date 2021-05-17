@@ -3,11 +3,10 @@ class StylistsController < ApplicationController
 
 
   def index
-    # binding.pry
-    
-      @stylists = Stylist.all
+
+      @stylists = Stylist.all.order(created_at: :desc)
       # @stylists = Stylist.find_by_name('a')     # << LIVE CODE PRACTICE : Show only stylist name starts with (a)
-      @most_reviews = Stylist.most_reviews
+      # @most_reviews = Stylist.most_reviews       #<=== moved to page path
       # @high_rated_hairstylists = Stylist.stars_more_than(3)
       # @more_than_4_stars = Stylist.more_than_4_stars
   end
@@ -59,6 +58,7 @@ class StylistsController < ApplicationController
 
   def destroy
   end
+
 end
 
 
