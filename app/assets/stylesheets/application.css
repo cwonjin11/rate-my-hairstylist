@@ -14,6 +14,19 @@
  *= require_self
  */
 
+
+    /* #navbar {
+        display:inline-block;
+        width:100%;
+        /* position:absolute; */
+        /* margin-left:25%; */
+        /* margin-top:30px; }*/
+
+
+ body {
+    background-color: rgb(255, 255, 255);
+  }
+
  div{
     width: auto;
     margin: auto;
@@ -56,7 +69,9 @@ label {
     /* margin-left: 10px; */
   }
 
-
+.star {
+color: gold;
+}
 /* input { */
     /* margin-left: 10px; */
 
@@ -89,9 +104,22 @@ ul.split {
     column-gap: 20px;
   }
 
+ul.a {
+  background-size: auto;
+  list-style-type: square;
+  border-radius: 8px;
+}
+
+ul {
+  background: rgb(255, 255, 255);
+  background-size: auto;
+  border-radius: 15px;
+}
+
 ul li {
-    background: rgb(253, 238, 199);;
-    margin: 20px;
+    background: rgb(255, 255, 255);;
+    /* margin: 10px; */
+    /* border-radius: 8px; */
     /* width: 28%; */
 
     /* float:left; */
@@ -99,16 +127,21 @@ ul li {
 
 
 
-ul.a {
-    background-size: auto;
-    list-style-type: square;
-}
-
 
 ol {
-    background: rgb(253, 238, 199);
+    background: rgb(255, 255, 255);
     background-size: auto;
+    border-radius: 15px;
   }
+
+ol li {
+  background: rgb(255, 255, 255);;
+  /* margin: 10px; */
+  /* border-radius: 8px; */
+  /* width: 28%; */
+
+  /* float:left; */
+}
 
 
 
@@ -135,3 +168,5 @@ ol {
     background-color: darkgoldenrod;
     color: white;
   }
+
+  

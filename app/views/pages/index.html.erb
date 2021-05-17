@@ -5,7 +5,10 @@
     <ol>
 
       <% @most_reviews.each do |hairstylist| %>
-      <li><%= link_to hairstylist.name, stylist_path(hairstylist) %> <span class="right"> <%= hairstylist.user_stylists.count %> reviews </span></li>
+        <li>
+            <b><%= link_to hairstylist.name, stylist_path(hairstylist) %></b>, 
+            <%= hairstylist.user_stylists.count %> reviews
+        </li>
       <% end %>
 
     </ol>
@@ -15,15 +18,14 @@
 
 <h3> Recently High-rated Reviews </h3>
 
-    <ol>
+    <ul>
 
         <% @high_rated_hairstylists.each do |hairstylist| %>
             <li> 
-                <span style="color:SlateBlue;font-weight:bold"> 
-                    <%=hairstylist.stylist.name %>
-                </span>, <%= hairstylist.stars %> stars<br>
+                <span style="color:SlateBlue;font-weight:bold"> <%= link_to hairstylist.stylist.name, stylist_path(hairstylist.stylist) %> </span>, 
+                <% hairstylist.stars.times do %> <span class="star">⭐️</span><% end %>
                 <b><%= hairstylist.user.username %></b> says, <%= hairstylist.comment %> 
             </li>
         <% end %>
 
-    </ol>
+    </ul>
