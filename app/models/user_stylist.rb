@@ -19,12 +19,13 @@ class UserStylist < ApplicationRecord
     where('stars > ?', amount)
     .order(haircut_date: :desc)
     .limit(5)
-}
+  }
 
-
-scope :recent_haircut_date_reviews, -> { 
-  order(haircut_date: :desc) 
-  .limit(5) }
+#############order by haircut_date(desc) ###################
+  scope :recent_haircut_date_reviews, -> { 
+    order(haircut_date: :desc) 
+    .limit(5) 
+  }
   
 
 end
