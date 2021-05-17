@@ -30,22 +30,35 @@
   </tbody>
 </table>
 
-<p>💁💫 <%= link_to "EDIT Your Profile", edit_user_path(@user) %> 💁💫</p>
+<p><%= link_to "EDIT Your Profile", edit_user_path(@user), :class => "button" %></p>
 
 <br>
 
 
-<h3> Here is your recent haircut date ! </h3>
+<h3> Here is your previous haircut date ! </h3>
 <ul>
-<% @user.user_stylists.each do |user_stylist| %>
-<li><%= user_stylist.haircut_date.strftime("%m/%d/%Y") %>, with hairstylist name : <%= user_stylist.stylist.name %></li>
+
+
+    <% if @user.user_stylists.size == 0 %>
+        "No reviews written yet. Let's add some reviews!"
+        <%= link_to "Add a Review", new_user_user_stylist_path(@user), :class => "button" %>
+
+    <% else %>
+        <% @user.user_stylists.order(haircut_date: :desc).each do |user_stylist| %>
+        <li><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %>, 
+        by hairstylist : <%= link_to user_stylist.stylist.name, stylist_path(user_stylist.stylist)%></li>
+    
+    <% end %>
+
 
 <% end %>
+
+
 </ul>
 
 <br>
 <h3>Click here to see your reviews </h3>
-<p><%= link_to "🤩 Your Reviews 🤩", user_user_stylists_path(@user) %></p>
+<p><%= link_to "Your Reviews", user_user_stylists_path(@user), :class => "button" %></p>
 <br><br>
 
 
