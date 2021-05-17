@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-    skip_before_action :current_user, only: [:new, :create]
+    skip_before_action :current_user, only: [:new, :create]  #sign up : no object
     skip_before_action :logged_in?, only: [:new, :create]
     skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
 
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
+        flash[:message] = "Succesfully Updated"
         redirect_to user_path(@user)
         else
             # binding.pry
