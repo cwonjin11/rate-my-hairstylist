@@ -19,7 +19,9 @@
     <ul> 
         <% @stylist.user_stylists.each do |all_comments| %>
             <li> <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %> <br>
-                ⭐️ Rating ⭐️ : <%= all_comments.stars %> / 5<br>
+                Rating : <% all_comments.stars.times do  %><span class="star">⭐️</span><% end %> <br>
             </li>
         <% end %>
     </ul>
+
+

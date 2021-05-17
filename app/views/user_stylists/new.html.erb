@@ -26,11 +26,11 @@
         <%= f.date_field :haircut_date %><br>
         <%= f.label :rating, "Let's rate your hair stylist! " %>
         <%= f.select(:stars, options_for_select([
-            ["1", 1],
-            ["2", 2],
-            ["3", 3],
-            ["4", 4],
-            ["5", 5]
+            ["⭐️", 1],
+            ["⭐️⭐️", 2],
+            ["⭐️⭐️⭐️", 3],
+            ["⭐️⭐️⭐️⭐️", 4],
+            ["⭐️⭐️⭐️⭐️⭐️", 5]
             ])) %> <br>
         <%= f.label :services, "men's haircuts? women's hair cut? kids? perm? dying? " %>
         <%= f.text_field :services %><br>

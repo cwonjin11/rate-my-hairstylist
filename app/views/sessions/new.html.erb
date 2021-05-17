@@ -1,4 +1,4 @@
-<h1> Welcome to Rate My Hair Stylist!!! 🤩</h1><br>
+<h2> Please Log in to Rate My Hair Stylist!!! 🤩</h2><br>
 
  <% if @errors %>
     <p style="color: crimson;"> <b> <%= @errors %> </b> </p>
@@ -6,20 +6,18 @@
 
 
 
-<% User.all.each do |user| %>
+<!--<% User.all.each do |user| %>
 <li><%= user.username %></li>
-<% end %>
+<% end %>-->
 
 <%= form_with url: '/login' do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %><br>
-
-        <br>
     
     <%= f.label :password %>
     <%= f.password_field :password %><br>
 
-        <br><br>
+        <br>
     
     <%= f.submit "Login🌀💫" %>
 <% end %>
