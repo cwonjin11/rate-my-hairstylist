@@ -31,30 +31,14 @@ class Stylist < ApplicationRecord
       select("stylists.name, stylists.id, count(user_stylists.id) as user_stylists_count")
       .joins(:user_stylists)
       .group("stylists.id")
-      .order("user_stylists_count DESC")
+      .order("user_stylists_count DESC", "stylists.name ASC")
       .limit(5)
     )}
 
-
-    # scope :stars_more_than, ->(amount) {
-    #   select("stylists.name, stylists.id, average(user_stylists.stars) as stylists_average_rating")
-    #   .joins(:user_stylists)
-    #   where("stylists_average_rating> ? ", amount)
-    #   .group("stylists.id")
-    #   .order("stylists_average_rating DESC")
-    #   .limit(5)
-    # }
+    
 
     # joins(:user_stylists)
     # .group("stylists.id")
-
-    # scope :high_rated, -> {(
-      # select("stylists.name, stylists.id, count(user_stylists.stars) as user_stylists_stars")
-      # .joins(:user_stylists)
-      # .group("stylists.id")
-      # .order("user_stylists_stars DEC")
-      # .limit(5)
-      # )}
 
       # scope :stars_more_than, ->(amount) { where("price > ?", amount) }
 
