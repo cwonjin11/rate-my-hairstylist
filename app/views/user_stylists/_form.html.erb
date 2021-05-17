@@ -3,11 +3,12 @@
    <%= f.collection_select :stylist_id, Stylist.order('created_at DESC').all, :id, :name, 
     {:prompt => true} %> <br>
 
+
 <br>
-        <!-- or→ <%= link_to "🤯Create a New Hair Stylist🤯", new_stylist_path %> <br><br> -->
-       <br>
-
-
+    <% if params[:id] == nil   %>
+        or→ <%= link_to "🤯Create a New Hair Stylist🤯", new_stylist_path %> <br><br>
+    <% end %>
+<br>
 
 
 
@@ -27,10 +28,6 @@
         <%= f.number_field :price, step: :any %><br><br>
         <%= f.label :comment, "Please share your experience! " %>
         <%= f.text_area :comment %><br>
-    
-
-
-    
         <br><br>
 
             <%= f.submit "submit", :class => "button"%>
