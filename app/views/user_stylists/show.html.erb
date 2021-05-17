@@ -8,7 +8,7 @@
     Date : <i><span style="color:SlateBlue;font-weight:bold"> <%= @user_stylist.haircut_date.strftime("%m/%d/%Y") %></i><br><br>
     <!-- got the stylist name here!! -->
     ✄ Hair Stylist Name : <span style="color:red;"> <%= @user_stylist.stylist.name  %> </span>  (💇🏻‍<%= link_to "Hairstylist Info ☎", stylist_path(@stylist) %>)<br><br>
-    ✄ Rating : <% @user_stylist.stars.times do %><span class="star">★</span><% end %></span><br><br>
+    ✄ Rating : <% @user_stylist.stars.times do %><span class="star">⭐️</span><% end %></span><br><br>
     ✄ Service :  <span style="color:red;">  <%= @user_stylist.services %> </span><br><br>
     ✄ Price : <span style="color:red;"> $<%= @user_stylist.price %> </span> <br><br>
     ✄ Comment : <span style="color:green;"> <%= @user_stylist.comment %> </span> <br><br>
