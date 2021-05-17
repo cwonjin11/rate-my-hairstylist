@@ -28,23 +28,6 @@
 <!--###############   ALL  Reviews  ###############################################  -->
 <% else %> 
 
-    <!-- ################## SCOPE : High-rated Reviews  ############## -->
-    <h3> Recently High-rated Reviews </h3>
-        <ol>
-
-            <% @high_rated_hairstylists.each do |hairstylist| %>
-                <li> 
-                    <span style="color:SlateBlue;font-weight:bold"> 
-                         <%=hairstylist.stylist.name %>
-                    </span>, <%= hairstylist.stars %> stars<br>
-                     <b><%= hairstylist.user.username %></b> says, <%= hairstylist.comment %> 
-                </li>
-            <% end %>
-
-        </ol>
-<hr>    <!-- ################################################################  -->
-
-
 <h2> We have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
 
    
@@ -61,7 +44,7 @@
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span>/ 5 <br>
                     ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
-                    
+                    <% render 'reviews'%>
 
                 <%else%>
                 
@@ -71,9 +54,6 @@
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <span style="color:red;"> <%= user_stylist.stars %> </span>/ 5 <br>
                     ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
-                    ✄ USER_ID : <span style="color:green;"> <%= user_stylist.user_id %> </span> <br>
-                    ✄ STYLIST_ID : <span style="color:green;"> <%= user_stylist.stylist_id %> </span> <br>
-
                 <% end %>
 
             </li>
