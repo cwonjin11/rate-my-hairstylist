@@ -12,9 +12,16 @@ class UserStylist < ApplicationRecord
 
 
   ######### argument added in the controller for 5 stars! ################
-  scope :stars_more_than, ->(amount) { where('stars > ?', amount)
-                                        .order(haircut_date: :desc)
-                                        .limit(5)
-                                      }
+  scope :stars_more_than, ->(amount) { 
+    where('stars > ?', amount)
+    .order(haircut_date: :desc)
+    .limit(5)
+}
 
-  end
+
+scope :recent_haircut_date_reviews, -> { 
+  order(haircut_date: :desc) 
+  .limit(5) }
+  
+
+end
