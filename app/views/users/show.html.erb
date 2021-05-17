@@ -32,10 +32,20 @@
 
 <p>💁💫 <%= link_to "EDIT Your Profile", edit_user_path(@user) %> 💁💫</p>
 
-<br><br>
+<br>
 
-<h2>Click here to see your reviews </h2>
-<h2><%= link_to "🤩 Your Reviews 🤩", user_user_stylists_path(@user) %></h2>
+
+<h3> Here is your recent haircut date ! </h3>
+<ul>
+<% @user.user_stylists.each do |user_stylist| %>
+<li><%= user_stylist.haircut_date.strftime("%m/%d/%Y") %>, with hairstylist name : <%= user_stylist.stylist.name %></li>
+
+<% end %>
+</ul>
+
+<br>
+<h3>Click here to see your reviews </h3>
+<p><%= link_to "🤩 Your Reviews 🤩", user_user_stylists_path(@user) %></p>
 <br><br>
 
 
