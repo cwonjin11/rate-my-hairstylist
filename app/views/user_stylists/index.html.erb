@@ -14,7 +14,7 @@
             </span> <br>
                 ✄ Hairstylist Name : <span style="color:red;">  <%= user_stylist.stylist.name %> </span> <br>
                 ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
-                ✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br>
+                ✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br><br>
 
    
         </li>
@@ -45,8 +45,8 @@
                     </span>  ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅  👏 Your Review!! 👏 </b><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
-                    ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
-                    <% render 'reviews'%>
+                    ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br><br>
+    
 
                 <%else%>
                 
@@ -55,7 +55,7 @@
                     </span><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
-                    ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br>
+                    ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br><br>
                 <% end %>
 
             </li>
