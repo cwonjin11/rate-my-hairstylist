@@ -23,8 +23,9 @@
         <% @high_rated_hairstylists.each do |hairstylist| %>
             <li> 
                 <span style="color:SlateBlue;font-weight:bold"> <%= link_to hairstylist.stylist.name, stylist_path(hairstylist.stylist) %> </span>, 
-                (<% hairstylist.stars.times do %> <span class="star">⭐️</span><% end %>)
-                <b><%= hairstylist.user.username %></b> says, <%= hairstylist.comment %> 
+                (<% hairstylist.stars.times do %> <span class="star">⭐️</span><% end %>), 
+                <%= hairstylist.haircut_date.strftime("%m/%d/%Y") %>
+                
             </li>
         <% end %>
 
@@ -37,7 +38,7 @@
 
         <% @recent_reviews.each do |reviews| %>
             <li> 
-                <span style="color:SlateBlue;font-weight:bold"> <%= link_to reviews.haircut_date, user_stylist_path(reviews) %> </span>, 
+                <span style="color:SlateBlue;font-weight:bold"> <%= link_to reviews.haircut_date.strftime("%m/%d/%Y"), user_stylist_path(reviews) %> </span>, 
                 <%= reviews.services %>
                 <b><%= reviews.user.username %></b> says, <%= reviews.comment %> 
             </li>
