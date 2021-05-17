@@ -16,7 +16,7 @@ class Stylist < ApplicationRecord
     #   self.name = self.name.try(:downcase)
     # end
 
-    #### scope method ####
+  
     #hair stylist average rating#
     def average_rating
         UserStylist.where(stylist_id: self.id).average(:stars).to_f.round(1)
@@ -26,7 +26,7 @@ class Stylist < ApplicationRecord
       UserStylist.find_by(stylist_id: self.id).stars
     end
 
-
+    #### scope method ####
     scope :most_reviews, -> {(
       select("stylists.name, stylists.id, count(user_stylists.id) as user_stylists_count")
       .joins(:user_stylists)
