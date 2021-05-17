@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     end
     if user.valid?
       session[:user_id] = user.id
-       redirect_to user_path(user)
+       redirect_to pages_path
     else
       flash[:message] = user.errors.full_messages.join(", ")
       redirect_to root_path
@@ -26,13 +26,16 @@ class SessionsController < ApplicationController
   def welcome
     @user = User.find_by_id(params[:id])
       if logged_in?
-        redirect_to user_path(@user)
+        redirect_to pages_path
       end
   end
 
 
   def new # REMEMBER  : NOT TAKING IN AN OBJECT!!
-  
+    if logged_in?
+      flash[:message] = "You are already logged in!"
+      redirect_to root_path
+    end
   end
   def create
 
@@ -43,7 +46,7 @@ class SessionsController < ApplicationController
     if  @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
           # binding.pry  #  Final Check!! 👀
-        redirect_to user_path(@user)
+        redirect_to pages_path
     else
         @errors = "Please check your username and password."
         # flash[:message] = user.errors.full_messages.join(", ")
