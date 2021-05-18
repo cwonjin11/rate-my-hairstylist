@@ -52,6 +52,9 @@ class SessionsController < ApplicationController
         # flash[:message] = user.errors.full_messages.join(", ")
         # redirect_to login_path    
         render :new #  redirect_to login_path
+        #Why do we use render after a failed attempt to create an object? ○ 
+        #Because we do not want to carry over any false input from
+        #the user who last used the form, or carry over any errors.
     end
 
   end

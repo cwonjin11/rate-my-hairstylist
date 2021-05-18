@@ -3,11 +3,11 @@ class UserStylistsController < ApplicationController
 
     def index 
         if params[:user_id]
-            @user_stylists = current_user.user_stylists.order(created_at: :desc) 
+            @user_stylists = current_user.user_stylists.recent_haircut_date_order
             # binding.pry
         else
             # binding.pry
-            @user_stylists = UserStylist.all.order(created_at: :desc)
+            @user_stylists = UserStylist.recent_haircut_date_order
             
             # binding.pry
             ### scope :stars_more_than   ==>  only 4 or 5 stars will be displayed ###

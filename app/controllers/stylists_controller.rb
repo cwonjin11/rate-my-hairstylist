@@ -4,12 +4,12 @@ class StylistsController < ApplicationController
 
   def index
 
-      @stylists = Stylist.all.order(created_at: :desc)
-      # @stylists = Stylist.find_by_name('a')     # << LIVE CODE PRACTICE : Show only stylist name starts with (a)
+      @stylists = Stylist.alpha_order_by_name ##all stylists' name in alphabetical order 
+      # @stylists = Stylist.find_by_name('sa')     # << LIVE CODE PRACTICE : display stylist name starts with (a) #{}%
+      # @stylists = Stylist.find_by_shop('am')     # << LIVE CODE PRACTICE : display shop name includes with (am) %#{}%
       # @most_reviews = Stylist.most_reviews       #<=== moved to page path
-      # @high_rated_hairstylists = Stylist.stars_more_than(3)
-      # @more_than_4_stars = Stylist.more_than_4_stars
   end
+
   def show
   end
 
@@ -50,14 +50,14 @@ class StylistsController < ApplicationController
 
 
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
-  def destroy
-  end
+  # def destroy
+  # end
 
 end
 
