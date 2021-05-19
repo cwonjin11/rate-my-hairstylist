@@ -12,8 +12,8 @@
 
      <!--   🤩<%= link_to "All Hairstylists", new_user_stylist_path(@user) %>🤩 || -->
 
-      <b><h4>
-         🤩<%= link_to "Main", pages_path %>🤩 ||
+         <h4>
+         <b>|| 🤩<%= link_to "Main", pages_path %>🤩 ||
          🤩<%= link_to "Your Reviews", user_user_stylists_path(@user) %>🤩 ||
          🤩<%= link_to "Add a Review", new_user_user_stylist_path(@user) %>🤩 ||
          🤩<%= link_to "All Reviews", user_stylists_path %>🤩 || 
@@ -26,7 +26,9 @@
 
 
         🤯<%= link_to "Your Profile", user_path(@user) %>🤯 ||
-        💥<%= link_to "Log Out", logout_path,  method: :delete %> 💥 ||</h4></b>
+        💥<%= link_to "Log Out", logout_path,  method: :delete %> 💥 ||
+        </b>
+        </h4>
           <h1>   💇‍♂️  Hello,  <%= current_user.username.upcase %>!  💇🏻‍♂️ ‍</h1>
 
 
