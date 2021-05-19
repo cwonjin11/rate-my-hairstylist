@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     skip_before_action :logged_in?, only: [:new, :create]
     skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
 
-    def index 
-        @users = User.all
-    end
+    # def index 
+    #     @users = User.all
+    # end
     def show
         prevent_user
     end
@@ -16,7 +16,12 @@ class UsersController < ApplicationController
 
     #### sign up ###
     def new 
-        @user = User.new
+        if logged_in?
+            flash[:message] = "You are already logged in!"
+            redirect_to pages_path
+        else
+            @user = User.new
+        end
     end
 
     def create 
