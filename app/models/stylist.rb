@@ -3,7 +3,7 @@ class Stylist < ApplicationRecord
     has_many :users, through: :user_stylists
 
    
-    validates_presence_of :name, :shop_name, :address
+    validates_presence_of :name, :phone, :shop_name, :address
     validates :phone, :presence => true, :phone => true
     
     ##### make upcase, downcase as the same name #####
