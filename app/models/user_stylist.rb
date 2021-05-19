@@ -21,11 +21,18 @@ class UserStylist < ApplicationRecord
     .limit(5)
   }
 
-#############order by haircut_date(desc) ###################
+#############order by haircut_date(desc) on pages route ###################
   scope :recent_haircut_date_reviews, -> { 
     order(haircut_date: :desc) 
     .limit(5) 
   }
+
+  #############order by haircut_date(desc) for index ###################
+  scope :recent_haircut_date_order, -> { order(haircut_date: :desc) }
+
   
 
 end
+
+
+#Stylist.joins(:user_stylists)  <=== 

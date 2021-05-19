@@ -20,6 +20,7 @@ class Stylist < ApplicationRecord
     #hair stylist average rating#
     def average_rating
         UserStylist.where(stylist_id: self.id).average(:stars).to_f.round(1)
+        #find @stylist and make average of stars from @stylist.user_stylist where @stylist id and user_Stylist stylist_id matched.  and then make it float value and round from the first decimal place.
     end
 
     def hairstylist_rating
@@ -27,25 +28,32 @@ class Stylist < ApplicationRecord
     end
 
     #### scope method ####
-    scope :most_reviews, -> {(
-      select("stylists.name, stylists.id, count(user_stylists.id) as user_stylists_count")
-      .joins(:user_stylists)
-      .group("stylists.id")
-      .order("user_stylists_count DESC", "stylists.name ASC")
-      .limit(5)
+    # Stylist.joins(:user_stylists).group('stylists.id').order('count(user_stylists.id) desc')
+    scope :most_reviews, -> {(joins(:user_stylists).group('stylists.id').order('count(user_stylists.id) desc', 'stylists.name ASC')
+      # select("stylists.name, stylists.id, count(user_stylists.id) as user_stylists_count")
+      # .joins(:user_stylists)
+      # .group("stylists.id")
+      # .order("user_stylists_count DESC", "stylists.name ASC")
+      # .limit(5)
     )}
 
-    
-
-    # joins(:user_stylists)
-    # .group("stylists.id")
-
-      # scope :stars_more_than, ->(amount) { where("price > ?", amount) }
+    #### alpha ordering###
+    scope :alpha_order_by_name, -> { order(:name) }
+      # scope :price_more_than, ->(amount) { where("price > ?", amount) }
 
 
 
-
+ ########name start with 'letter'###################
       # def self.find_by_name(letter)
-      #   where('name LIKE ?', "#{letter}%").order('name ASC')
+      #   where('name LIKE ?', "#{letter}%").order('name DESC')
       # end
+     # @stylists = Stylist.find_by_name('sa')     # << LIVE CODE PRACTICE : display stylist name starts with (sa) #{}%
+
+ ########shop_namename start with 'letter'###################
+      # def self.find_by_shop(letter)
+      #   where('shop_name LIKE ?', "%#{letter}%").order('shop_name DESC')
+      # end
+  # @stylists = Stylist.find_by_shop('am')     # << LIVE CODE PRACTICE : display shop name includes with (am) %#{}%
+
+
 end
