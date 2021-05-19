@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+
 root "sessions#welcome"
 
 
-get 'pages', to: 'pages#index'
+get 'pages', to: 'pages#index'#, as:'pages'        => custom routes : 'get' the route named 'pages (routes that display in the address bar)' and go to my program pages controller def index. as means what i want to display on the address bar(as abc => 'abc_path' )
 ####### OmniAuth #################   google ########
 # get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 get '/auth/:provider/callback', to: 'sessions#omniauth'  #<= makes more dynamic
@@ -19,13 +20,16 @@ delete 'logout', to: "sessions#destroy"
 #################################################################
 
 #################rested routes####################################
-  resources :users do
+  resources :users, :except => [:index] do
     resources :user_stylists
   end
   resources :user_stylists
   resources :stylists, :except => [:edit, :update, :destroy]
 #################################################################
 
+
+# match '*path' => redirect('/'), :via => [:get, :post] 
+### localhost:3000/qwefkfqasdkfas;dlkfn to the root path/
 
 end
 
