@@ -1,39 +1,13 @@
 
 
-<!--###############   Your Reviews ###############################################  -->
 <% if params[:user_id] %>
-
     <h2> You have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(current_user.user_stylists.size) %> </h2>
-    
-    <ul class="a">
-      
-        <% @user_stylists.each do |user_stylist| %>
-         <li>
-            <span style="color:SlateBlue;font-weight:bold"> 
-                Date added :<i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %></i> 
-            </span> <br>
-                ✄ Hairstylist Name : <span style="color:red;">  <%= user_stylist.stylist.name %> </span> <br>
-                ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
-                ✄ Service : <span style="color:green;">  <%= user_stylist.services %>  </span> <br><br>
-
-   
-        </li>
-        <% end%>  
-
-    </ul>
-    
-
-<!--###############################################################################  -->   
-
-
-
-<!--###############   ALL  Reviews  ###############################################  -->
 <% else %> 
-
 <h2> We have total <span style="color:crimson;"> <%= @user_stylists.all.size %> </span> <%= "review".pluralize(UserStylist.all.size) %> </h2>
+<% end %>
 
-   
-   <!-- Your reviews in ALL reviews --> 
+
+
     <ul class="split">
         <% @user_stylists.each do |user_stylist| %>
             <li>
@@ -44,7 +18,7 @@
                     <b>Date : <i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %></i> 
                     </span>  ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅  👏 Your Review!! 👏 </b><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
-                    ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
+                    ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><% (5 - user_stylist.stars).times do %><span class="out-of">☆</span><% end %><br>
                     ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br><br>
     
 
@@ -54,7 +28,7 @@
                     Date : <i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_stylist_path(user_stylist) %></i>
                     </span><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
-                    ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><br>
+                    ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><% (5 - user_stylist.stars).times do %><span class="out-of">☆</span><% end %><br>
                     ✄ Service : <span style="color:green;"> <%= user_stylist.services %> </span> <br><br>
                 <% end %>
 
@@ -64,4 +38,3 @@
 
     </ul>
 
-<% end %> 
