@@ -1,5 +1,5 @@
 class UserStylistsController < ApplicationController
-    before_action :find_user_stylist,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    before_action :find_user_stylist#,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     def index 
         if params[:user_id]
@@ -20,7 +20,7 @@ class UserStylistsController < ApplicationController
     def show
         # @user_stylist = UserStylist.find_by_id(params[:id])   <==before action! go!
         # binding.pry
-        find_stylist_id_on_user_stylist
+        find_stylist_id_on_user_stylist  #need stylist id to show stylist name in user_stylist show
         # binding.pry
     end
 
@@ -28,10 +28,8 @@ class UserStylistsController < ApplicationController
     def new
         
         @user_stylist = current_user.user_stylists.build
-        @user_stylist.build_stylist
-        
-        
-      
+        # @user_stylist.build_stylist
+        # binding.pry
     end
 
     def create 
@@ -40,25 +38,17 @@ class UserStylistsController < ApplicationController
         @user_stylist = current_user.user_stylists.build(user_stylist_params)
         # if @user_stylist.stylist
         # if @user_stylist.stylist_id != nil
-            # binding.pry
         if  @user_stylist.save
-            # binding.pry
-            # flash[:message] = "Your review with hairstylist #{@user_stylist.stylist.name.upcase} has been created"
+            flash[:message] = "Your review with hairstylist #{@user_stylist.stylist.name.upcase} has been created"
             redirect_to user_user_stylist_path(@user, @user_stylist)
             
         else
-            flash[:message] = @user_stylist.errors.full_messages.join(", ")
             # if @user_stylist.stylist_id == nil 
-
             #     flash[:message] = "please select hairstylist"
-
             # elsif 
-
             # else
             #     # binding.pry
             #     flash[:message] = @user_stylist.errors.full_messages.join(", ")
-
-
             # end
             # flash[:message] = @user_stylist.errors.full_messages.join(", ")
             # flash[:message] = @user_stylist.stylist.errors.full_messages.join(", ")
@@ -93,7 +83,7 @@ class UserStylistsController < ApplicationController
         redirect_to user_user_stylist_path(@user, @user_stylist)
         else
             # binding.pry
-        flash[:message] = @user_stylist.errors.full_messages.join(", ")
+        # flash[:message] = @user_stylist.errors.full_messages.join(", ")
         render :edit
 
         end

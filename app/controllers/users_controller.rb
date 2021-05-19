@@ -30,7 +30,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to pages_path
         else
-            flash[:message] = @user.errors.full_messages.join(", ")
+            # flash[:message] = @user.errors.full_messages.join(", ")
             render :new
         end
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
         else
             # binding.pry
-        flash[:message] = @user.errors.full_messages.join(", ")
+        # flash[:message] = @user.errors.full_messages.join(", ")
         render :edit
         end
             #YOU CAN ALSO DO THIS: redirect_to @user 

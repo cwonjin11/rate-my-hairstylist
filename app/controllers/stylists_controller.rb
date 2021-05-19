@@ -28,7 +28,7 @@ class StylistsController < ApplicationController
         flash[:message] = "You've seccessfully created a new Hairstylist named #{@stylist.name.upcase}."
         redirect_to new_user_user_stylist_path(@user)
     else
-        flash[:message] = @stylist.errors.full_messages.join(", ")
+        # flash[:message] = @stylist.errors.full_messages.join(", ")
         # binding.pry
         render :new
     end
