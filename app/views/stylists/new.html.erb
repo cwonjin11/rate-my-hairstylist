@@ -1,12 +1,15 @@
+<%= render partial: 'layouts/errors', locals:{object: @stylist}%>
+
 <h2>Create a New Hairstylist !! </h2>
 
-<hr><br>
+<br>
 <div>
         <%= form_for @stylist do |f| %>
+
                 <%= f.label :name %>
                 <%= f.text_field :name %><br>
                 <%= f.label :phone %>
-                <%= f.text_field :phone %><br>
+                <%= f.telephone_field :phone, placeholder: "123-123-1234", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %><br>
                 <%= f.label :shop_name %>
                 <%= f.text_field :shop_name %><br>
                 <%= f.label :address %>
