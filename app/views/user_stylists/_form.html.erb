@@ -16,14 +16,14 @@
 
         <%= f.label :haircut_date, "Haircut Date" %>
         <%= f.date_field :haircut_date %><br>
-        <%= f.label :rating, "Rating" %>
+        <%= f.label :stars, "Rating" %>
         <%= f.select(:stars, options_for_select([
             ["⭐️", 1],
             ["⭐️⭐️", 2],
             ["⭐️⭐️⭐️", 3],
             ["⭐️⭐️⭐️⭐️", 4],
             ["⭐️⭐️⭐️⭐️⭐️", 5]
-            ])) %> <br>
+            ], selected: @user_stylist.stars)) %> <br>
         <%= f.label :services, "Services" %>
         <%= f.text_field :services %><br>
 
