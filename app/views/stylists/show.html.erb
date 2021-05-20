@@ -7,6 +7,7 @@
         Shop Name : <span style="color:red;"> <%= @stylist.shop_name %> </span> <br>
         Address : <span style="color:green;">  <%= @stylist.address %></span><br>
         Overall Rating : <%= @stylist.average_rating %> / 5.0 <br>
+        Edit : <%= link_to @stylist.name, edit_stylist_path(@stylist) %>
         </li>
         <br>
     </ul>
@@ -17,9 +18,10 @@
         <h3> Total <%= @stylist.user_stylists.size %> <%= pluralize_without_count(@stylist.user_stylists.count, 'review', ':') %></h3> 
  
     <ul> 
-        <% @stylist.user_stylists.each do |all_comments| %>
-            <li> <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %> <br>
-                Rating : <% all_comments.stars.times do  %><span class="star">⭐️</span><% end %> <br>
+        <% @stylist.user_stylists.order(haircut_date: :desc).each do |all_comments| %>
+            <li><span style="color:SlateBlue;font-weight:bold"> Date: <%= all_comments.haircut_date %> </span> <br> 
+                <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %><br>
+                Rating : <% all_comments.stars.times do  %><span class="star">⭐️</span><% end %> <br><br>
             </li>
         <% end %>
     </ul>

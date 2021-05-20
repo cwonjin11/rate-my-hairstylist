@@ -1,16 +1,18 @@
 class StylistsController < ApplicationController
-  before_action :find_stylist, only: [:show]
+  before_action :find_stylist, only: [:show, :edit, :update]
 
 
   def index
-
-      @stylists = Stylist.alpha_order_by_name ##all stylists' name in alphabetical order 
+      @stylists = Stylist.alphabetical_order ##all stylists' name in alphabetical order 
       # @stylists = Stylist.find_by_name('sa')     # << LIVE CODE PRACTICE : display stylist name starts with (a) #{}%
       # @stylists = Stylist.find_by_shop('am')     # << LIVE CODE PRACTICE : display shop name includes with (am) %#{}%
       # @most_reviews = Stylist.most_reviews       #<=== moved to page path
   end
 
   def show
+      if @stylist == nil
+        redirect_to stylists_path
+      end
   end
 
 
@@ -35,26 +37,19 @@ class StylistsController < ApplicationController
 
   end
 
-#   @wine = Wine.find_or_create_by(wine_params)
-#   @wine.creator_id = current_user.id
-#  if @wine.valid?
-#    @wine.name = @wine.full_name
-#    @wine.save
-#    redirect_to @wine
-#  else
-#    render :new
-#  end
 
+  def edit
+  end
 
-
-
-
-
-  # def edit
-  # end
-
-  # def update
-  # end
+  def update
+    if @stylist.update(stylist_edit_params)
+      redirect_to stylist_path(@stylist)
+      # binding.pry
+    else
+      # binding.pry
+      render :edit
+    end
+  end
 
   # def destroy
   # end
@@ -71,7 +66,27 @@ def find_stylist
 end
 
 def stylist_params
+  #strong params : can specify any attributes that can be created with
   #in our params, we wanna require who? (stylist!), and permit what? (attributes)
   params.require(:stylist).permit(:name, :phone, :shop_name, :address) 
 
 end
+
+def stylist_edit_params
+  #strong params : can specify any attributes that can be created with
+  #in our params, we wanna require who? (stylist!), and permit what? (attributes)
+  params.require(:stylist).permit(:phone, :shop_name, :address)
+
+end
+
+
+
+#   @wine = Wine.find_or_create_by(wine_params)
+#   @wine.creator_id = current_user.id
+#  if @wine.valid?
+#    @wine.name = @wine.full_name
+#    @wine.save
+#    redirect_to @wine
+#  else
+#    render :new
+#  end

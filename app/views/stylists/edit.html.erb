@@ -1,2 +1,25 @@
-<h1>Stylists#edit</h1>
-<p>Find me in app/views/stylists/edit.html.erb</p>
+
+<%= render partial: 'layouts/errors', locals:{object: @stylist}%>
+
+<h2>Edit Hairstylist <%= @stylist.name %> !! </h2>
+
+<br>
+<div>
+
+    Name : <span style="color:SlateBlue;font-weight:bold"> <%= @stylist.name %> </span><br>
+
+<br><br>
+
+            <%= form_for @stylist do |f| %>
+
+                <%= f.label :phone, "Phone ☎️"%>
+                <%= f.text_field :phone,  placeholder: "111-111-1111", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %><br>
+                <%= f.label :shop_name, "Shop Name 🏪" %>
+                <%= f.text_field :shop_name %><br>
+                <%= f.label :address, "Address 🌇" %>
+                <%= f.text_field :address, style: 'width:30em' %><br><br>
+
+        <%= f.submit "Update Hairstylist", :class => "button" %>
+        <% end %>
+
+</div>
