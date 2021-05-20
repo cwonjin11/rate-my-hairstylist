@@ -3,27 +3,44 @@
 <div class="row">
     <div class="column" style="background-color:#F5F5DC;">
         <div>
-            <h3> Most Reviewed Hairstylists!! </h3>
+            <h3> The Most Reviewed Hairstylists!! </h3>
                 <ol>
                     <% @most_reviews.each do |hairstylist| %>
                         <li>
-                            <b><%= link_to hairstylist.name, stylist_path(hairstylist) %></b>, 
+                            <b><%= link_to hairstylist.name, stylist_path(hairstylist) %></b>
                             <span class="right"><%= hairstylist.user_stylists.count %> reviews</span>
                         </li>
                     <% end %>
                 </ol>
         </div>
+
+                <div>
+            <h3>Top 5 High-Rated Hairstylists (more than 3 reviews) </h3>
+            <ul>
+                
+                    <% @stylist_with_overall.each do |stylist| %>
+                     <li>   <b><%= link_to stylist.name, stylist_path(stylist) %></b>
+                    <span class="right">overall <%= stylist.average_rating %> / 5.0</span><br>
+                    <!-- <% stylist.user_stylists.each do |su| %>
+                    <%= su.stars %>
+                    <% end %> -->
+                    </li> 
+                <% end %>
+                  
+            </ul>
+        </div>
+
     </div>
 
 
 
     <div class="column" style="background-color:#FFFAF0;">
         <div><br>
-            <h3> Recently High-rated Reviews </h3>
+            <h3> Recently High-Rated Reviews </h3>
                 <ul >
                     <% @high_rated_hairstylists.each do |hairstylist| %>
                         <li> 
-                            <span style="color:SlateBlue;font-weight:bold"> <%= link_to hairstylist.stylist.name, stylist_path(hairstylist.stylist) %> </span>, 
+                            <span style="color:SlateBlue;font-weight:bold"> <%= link_to hairstylist.stylist.name, stylist_path(hairstylist.stylist) %> </span> 
                             (<% hairstylist.stars.times do %><span class="star">⭐️</span><% end %>) 
                             <span class="right"><%= time_ago_in_words(hairstylist.created_at) %> ago</span>  
                         </li>
@@ -31,10 +48,11 @@
                 </ul>
         </div>
 
-
+        <br>
+        <br>
 
         <div >
-            <h3> Recent haircut reviews </h3>
+            <h3> Recent Haircut Reviews </h3>
                 <ul>
                     <% @recent_reviews.each do |reviews| %>
                         <li>

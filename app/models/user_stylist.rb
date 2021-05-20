@@ -14,25 +14,23 @@ class UserStylist < ApplicationRecord
   # accepts_nested_attributes_for :stylist
 
 
-  ######### argument added in the controller for 5 stars! ################
+  ######### Recently High-Rated Reviews on PAGES#INDEX ################
   scope :stars_more_than, ->(amount) { 
     where('stars > ?', amount)
     .order(haircut_date: :desc)
     .limit(5)
   }
 
-#############order by haircut_date(desc) on pages route ###################
-  scope :recent_haircut_date_reviews, -> { 
-    order(haircut_date: :desc) 
-    .limit(5) 
-  }
+  #############Recent Haircut Reviews on PAGES#INDEX###################
+    scope :recent_haircut_date_reviews, -> { 
+      order(haircut_date: :desc) 
+      .limit(5) 
+    }
 
-  #############order by haircut_date(desc) for index ###################
+  #########order by haircut_date(desc) for user_stylist index  page #############
   scope :recent_haircut_date_order, -> { order(haircut_date: :desc) }
 
-  
+
 
 end
 
-
-#Stylist.joins(:user_stylists)  <=== 
