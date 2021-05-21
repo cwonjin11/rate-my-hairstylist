@@ -24,7 +24,9 @@ delete 'logout', to: "sessions#destroy"
     resources :user_stylists
   end
   resources :user_stylists
-  resources :stylists, :except => [:edit, :update, :destroy]
+
+  resources :stylists, :except => [:destroy]
+
 #################################################################
 
 
