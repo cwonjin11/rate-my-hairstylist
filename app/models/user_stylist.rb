@@ -6,7 +6,7 @@ class UserStylist < ApplicationRecord
 
   validates_presence_of :haircut_date, :stars,:services, :price, :comment
   validates :price, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 2000 }
-  validates :comment, length: { minimum: 2, maximum: 500,
+  validates :comment, length: { minimum: 2, maximum: 1000,
     too_short: "%{count} characters is the minimum allowed", 
     too_long: "%{count} characters is the maximum allowed" }
 
