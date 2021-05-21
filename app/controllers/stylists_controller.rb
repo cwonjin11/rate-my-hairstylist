@@ -43,6 +43,7 @@ class StylistsController < ApplicationController
 
   def update
     if @stylist.update(stylist_edit_params)
+      flash[:message] = "Successfully Updated! "
       redirect_to stylist_path(@stylist)
       # binding.pry
     else

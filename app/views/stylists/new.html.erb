@@ -9,13 +9,13 @@
                 <%= f.label :name %>
                 <%= f.text_field :name %><br>
                 <%= f.label :phone %>
-                <%= f.telephone_field :phone, placeholder: "123-123-1234", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %><br>
+                <%= f.telephone_field :phone, placeholder: "111-111-1111", pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}" %><br>
                 <%= f.label :shop_name %>
                 <%= f.text_field :shop_name %><br>
                 <%= f.label :address %>
                 <%= f.text_field :address %><br>
 
-        <%= f.submit "Create a new Hair Stylist!" %>
+        <%= f.submit "Create a new Hair Stylist!", :class => "button" %>
         <% end %>
 
 </div>

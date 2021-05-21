@@ -9,9 +9,9 @@
         <li>
             <p>
             <!-- ### hairstylist average rating### -->
-            Name : ✂️<%= link_to stylist.name, stylist_path(stylist) %>✂️ <br>
-            Average Rating : <span style="color:crimson;"> <%= stylist.average_rating %> </span>, 
-            Total reviews : <span style="color:crimson;"> <%= stylist.user_stylists.size %> </span>
+            <b><%= link_to stylist.name, stylist_path(stylist) %> </b><br>
+            Overall rating : <span style="color:crimson;"><%= stylist.average_rating %></span>,  
+            Total reviews : <span style="color:crimson;"><%= stylist.user_stylists.size %></span>
             <!-- <%= current_user.user_stylists.size %> </span> <%= "review".pluralize(stylist.user_stylists.size) %> -->
 
             </p>
