@@ -16,9 +16,9 @@ UserStylist.destroy_all
     ###################
 
 #####    User    ######
-    20.times do
-        User.create!(username: Faker::Internet.username, 
-            email: Faker::Internet.email, 
+    10.times do
+        User.create!(username: Faker::Internet.unique.username, 
+            email: Faker::Internet.unique.email, 
             password: "123", 
             uid: "your-google-id", 
             provider: "google"
@@ -28,10 +28,10 @@ UserStylist.destroy_all
 
 
 #####    Stylist    ######
-30.times do
-    Stylist.create!(name: Faker::Name.name, 
+15.times do
+    Stylist.create!(name: Faker::Artist.unique.name, 
         phone: Faker::PhoneNumber.cell_phone, 
-        shop_name: Faker::Music::Prince.song, 
+        shop_name: Faker::Coffee.blend_name, 
         address: Faker::Address.full_address
     )
 end
@@ -41,10 +41,10 @@ end
 
 #####    UserStylist    ######
 40.times do
-    UserStylist.create!(haircut_date: Faker::Date.in_date_period, 
+    UserStylist.create!(haircut_date: Faker::Date.between(from: '2021-01-01', to: Date.today), 
         stars: rand(1..5), 
         comment: Faker::Restaurant.review, 
-        services: Faker::Superhero.prefix, 
+        services: Faker::Dessert.flavor, 
         price: Faker::Number.decimal(l_digits: 2), 
         user: User.all.sample, 
         stylist: Stylist.all.sample
@@ -57,15 +57,6 @@ end
 
 
 puts "
-
-
 BADA BING, 
 BADA BOOM!!
-
-
 "
-
-
-
-
-
