@@ -6,10 +6,9 @@
 
 
 
-<!--<% User.all.each do |user| %>
-<li><%= user.username %></li>
-<% end %>-->
-
+<% User.all.each do |user| %>
+<li><%= user.username %> - <%= user.user_stylists.size %></li>
+<% end %>
 <%= form_with url: '/login' do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username, placeholder: true %><br>
@@ -19,5 +18,5 @@
 
         <br>
     
-    <%= f.submit "Login🌀💫" %>
+    <%= f.submit "Login🌀💫", :class => "button" %>
 <% end %>

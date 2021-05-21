@@ -7,13 +7,13 @@
 <%= form_with model: @user, url: '/signup' do |f| %>
 <%= f.label "Username" %>
 <%= f.text_field :username, placeholder: true%>
-<%= f.label:email, "Email" %>
+<%= f.label "Email" %>
 <%= f.email_field :email, placeholder: true %>
 <%= f.label "Password" %>
 <%= f.password_field :password, placeholder: true  %><br><br>
 
 
 
-<%= f.submit "Signup 😜"%>
+<%= f.submit "Signup 😜", :class => "button"%>
 
 <%end%><br><br>
