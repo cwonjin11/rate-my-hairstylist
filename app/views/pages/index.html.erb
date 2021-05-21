@@ -42,7 +42,7 @@
                         <li> 
                             <span style="color:SlateBlue;font-weight:bold"> <%= link_to hairstylist.stylist.name, stylist_path(hairstylist.stylist) %> </span> 
                             (<% hairstylist.stars.times do %><span class="star">⭐️</span><% end %>) 
-                            <span class="right"><%= time_ago_in_words(hairstylist.created_at) %> ago</span>  
+                            <span class="right"><%= time_ago_in_words(hairstylist.haircut_date) %> ago</span>  
                         </li>
                     <% end %>
                 </ul>
