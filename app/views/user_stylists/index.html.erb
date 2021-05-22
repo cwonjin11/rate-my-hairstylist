@@ -15,7 +15,7 @@
                 <%if user_stylist.user_id == current_user.id %>
                     
                     <span style="color:red"> 
-                    <b>Date : <i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_user_stylist_path(@user, user_stylist) %></i> 
+                    <b>Date : <i><%= link_to user_stylist.datetime, user_user_stylist_path(@user, user_stylist) %></i> 
                     </span>  ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅  👏 Your Review!! 👏 </b><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><% (5 - user_stylist.stars).times do %><span class="out-of">☆</span><% end %><br>
@@ -25,7 +25,7 @@
                 <%else%>
                 
                     <span style="color:SlateBlue;font-weight:bold"> 
-                    Date : <i><%= link_to user_stylist.haircut_date.strftime("%m/%d/%Y"), user_stylist_path(user_stylist) %></i>
+                    Date : <i><%= link_to user_stylist.datetime, user_stylist_path(user_stylist) %></i>
                     </span><br>
                     ✄ Hairstylist Name : <span style="color:DarkCyan;"> <%= user_stylist.stylist.name %> </span> <br>
                     ✄ Rating : <% user_stylist.stars.times do %><span class="star">⭐️</span><% end %><% (5 - user_stylist.stars).times do %><span class="out-of">☆</span><% end %><br>

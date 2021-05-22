@@ -30,7 +30,9 @@ class UserStylist < ApplicationRecord
   #########order by haircut_date(desc) for user_stylist index  page #############
   scope :recent_haircut_date_order, -> { order(haircut_date: :desc) }
 
-
+  def datetime
+    self.haircut_date.strftime("%m/%d/%Y") if self.haircut_date
+  end
 
 end
 

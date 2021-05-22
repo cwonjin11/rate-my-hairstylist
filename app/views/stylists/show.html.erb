@@ -19,7 +19,7 @@
  
     <ul> 
         <% @stylist.user_stylists.order(haircut_date: :desc).each do |all_comments| %>
-            <li><span style="color:SlateBlue;font-weight:bold"> Date: <%= all_comments.haircut_date %> </span> <br> 
+            <li><span style="color:SlateBlue;font-weight:bold"> Date: <%= all_comments.datetime %> </span> <br> 
                 <b>"<%= all_comments.user.username %>"</b> says, <%= all_comments.comment %><br>
                 Rating : <% all_comments.stars.times do  %><span class="star">⭐️</span><% end %> <br><br>
             </li>

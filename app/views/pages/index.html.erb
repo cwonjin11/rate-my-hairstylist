@@ -56,7 +56,7 @@
                 <ul>
                     <% @recent_reviews.each do |reviews| %>
                         <li>
-                            <span style="color:SlateBlue;font-weight:bold"> <%= link_to reviews.haircut_date.strftime("%m/%d/%Y"), user_stylist_path(reviews) %> </span>
+                            <span style="color:SlateBlue;font-weight:bold"> <%= link_to reviews.datetime, user_stylist_path(reviews) %> </span>
                             by <b><%= reviews.user.username %></b>.
                         </li>
                     <% end %>
