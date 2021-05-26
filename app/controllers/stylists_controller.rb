@@ -19,6 +19,7 @@ class StylistsController < ApplicationController
       @stylist = Stylist.new
   end
 
+
   def create
       @stylist = Stylist.new(stylist_params)
 
@@ -32,11 +33,15 @@ class StylistsController < ApplicationController
   end
 
 
+
   def edit
   end
 
+
   def update
+    # binding.pry
     if @stylist.update(stylist_edit_params)
+      # binding.pry
       flash[:message] = "Successfully Updated! "
       redirect_to stylist_path(@stylist)
     else
@@ -44,23 +49,23 @@ class StylistsController < ApplicationController
     end
   end
 
-end
 
 
 
 
-private 
 
-def find_stylist
-  @stylist= Stylist.find_by_id(params[:id])
-end
+  private 
 
-def stylist_params
-  params.require(:stylist).permit(:name, :phone, :shop_name, :address) 
+    def find_stylist
+      @stylist= Stylist.find_by_id(params[:id])
+    end
 
-end
+    def stylist_params
+      params.require(:stylist).permit(:name, :phone, :shop_name, :address) 
+    end
 
-def stylist_edit_params
-  params.require(:stylist).permit(:phone, :shop_name, :address)
+    def stylist_edit_params
+      params.require(:stylist).permit(:phone, :shop_name, :address)
+    end
 
 end
