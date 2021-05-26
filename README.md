@@ -1,24 +1,22 @@
-# README
+# Rate My Hairstylist
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This simple Rails based web application allows users to create their reviews along with hairstylist.
+A User is able to create an account and add or edit one's hairstylist's review by creating hairstylist.
+A user can be authenticating through google as well.
 
-Things you may want to cover:
 
-* Ruby version
+To watch the demo video of this application, visit [(https://drive.google.com/file/d/1Qe1-ygtGggFIlaVsYm8m4GS6fW96FGp3/view)].
 
-* System dependencies
+## Install Instructions
 
-* Configuration
+Visit [rate-my-hairstylist](https://github.com/cwonjin11/rate-my-hairstylist) to begin using the app.
 
-* Database creation
+Clone this repository, run `bundle install`, `rails db:migrate`, and then run `rails s`. Open a new tab in your browser of (http://localhost:3000) to start your rails server.
 
-* Database initialization
+## Contributors Guide
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/cwonjin11/rate-my-hairstylist. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
-
-* ...
+The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
