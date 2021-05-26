@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
 
 
-    #### sign up ###
     def new 
         if logged_in?
             flash[:message] = "You are already logged in!"
@@ -30,12 +29,12 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to pages_path
         else
-            # flash[:message] = @user.errors.full_messages.join(", ")
+
             render :new
         end
 
     end
-    ###############
+
 
 
 
@@ -49,11 +48,8 @@ class UsersController < ApplicationController
         flash[:message] = "Succesfully Updated"
         redirect_to user_path(@user)
         else
-            # binding.pry
-        # flash[:message] = @user.errors.full_messages.join(", ")
         render :edit
         end
-            #YOU CAN ALSO DO THIS: redirect_to @user 
 
     end
 
@@ -76,13 +72,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        #in our params, we wanna require who? (user!), and permit what? (attributes)
         params.require(:user).permit(:username, :email, :password) 
 
     end
 
     def prevent_user
-        # binding.pry
         if current_user.id != params[:id].to_i
             flash[:message] = " Something went wrong here. Please try again! "
             redirect_to root_path

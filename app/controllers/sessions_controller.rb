@@ -4,8 +4,6 @@ class SessionsController < ApplicationController
   
   
   def omniauth
-    # binding.pry
-    #these two pieces of information are going to be recorded soley for the purpose of finding that user again
     user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
       u.username = auth['info']['first_name']
       u.email = auth['info']['email']
@@ -31,7 +29,7 @@ class SessionsController < ApplicationController
   end
 
 
-  def new # REMEMBER  : NOT TAKING IN AN OBJECT!!
+  def new
     if logged_in?
       flash[:message] = "You are already logged in!"
       redirect_to root_path
@@ -40,21 +38,13 @@ class SessionsController < ApplicationController
   def create
 
     @user = User.find_by(username: params[:username])
-
-    # binding.pry
-
     if  @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
-          # binding.pry  #  Final Check!! 👀
         redirect_to pages_path
     else
-        @errors = "Please check your username and password."
-        # flash[:message] = user.errors.full_messages.join(", ")
-        # redirect_to login_path    
-        render :new #  redirect_to login_path
-        #Why do we use render after a failed attempt to create an object? ○ 
-        #Because we do not want to carry over any false input from
-        #the user who last used the form, or carry over any errors.
+        @errors = "Please check your username and password."   
+        render :new 
+
     end
 
   end
@@ -66,7 +56,6 @@ class SessionsController < ApplicationController
 
   def destroy #log out
     session.clear
-    # redirect_to 'login'
     flash[:message] = "👋🏻 #{@user.username.upcase}, You've logged out. See You Again! 👋🏻"
     redirect_to root_path
   end

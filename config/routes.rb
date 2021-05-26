@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 root "sessions#welcome"
 
 
-get 'pages', to: 'pages#index'#, as:'pages'        => custom routes : 'get' the route named 'pages (routes that display in the address bar)' and go to my program pages controller def index. as means what i want to display on the address bar(as abc => 'abc_path' )
+get 'pages', to: 'pages#index'#, as:'pages'      
 ####### OmniAuth #################   google ########
 # get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 get '/auth/:provider/callback', to: 'sessions#omniauth'  #<= makes more dynamic

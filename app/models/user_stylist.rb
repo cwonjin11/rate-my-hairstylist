@@ -11,7 +11,6 @@ class UserStylist < ApplicationRecord
     too_long: "%{count} characters is the maximum allowed" }
 
   # accepts_nested_attributes_for :stylist, :reject_if => proc { |attributes| attributes['name, phone, shop_name, address'].blank? }
-  # accepts_nested_attributes_for :stylist
 
 
   ######### Recently High-Rated Reviews on PAGES#INDEX ################
@@ -33,6 +32,7 @@ class UserStylist < ApplicationRecord
   def datetime
     self.haircut_date.strftime("%m/%d/%Y") if self.haircut_date
   end
+
 
 end
 

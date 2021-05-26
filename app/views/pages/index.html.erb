@@ -21,9 +21,6 @@
                     <% @stylist_with_overall.each do |stylist| %>
                      <li>   <b><%= link_to stylist.name, stylist_path(stylist) %></b>
                     <span class="right">overall <%= stylist.average_rating %> / 5.0</span><br>
-                    <!-- <% stylist.user_stylists.each do |su| %>
-                    <%= su.stars %>
-                    <% end %> -->
                     </li> 
                 <% end %>
                   
