@@ -10,6 +10,20 @@ class Stylist < ApplicationRecord
     validates :name, uniqueness: { case_sensitive: false }
     validates_uniqueness_of :phone, :case_sensitive => false
   
+  #################LIVE CODING #####################
+    def self.search(params)
+      where("Lower(name) LIKE ? ", "%#{params}%")
+    end
+  ###################################################
+
+
+
+
+
+
+
+
+
 
     #single hair stylist average rating#
     def average_rating

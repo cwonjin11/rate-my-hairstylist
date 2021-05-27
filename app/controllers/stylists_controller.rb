@@ -4,7 +4,12 @@ class StylistsController < ApplicationController
 
   def index
       @stylists = Stylist.alphabetical_order 
-  
+      
+    ############ Live Coding #################################
+      if params[:query] && !params[:query].empty?
+        @stylists = @stylists.search(params[:query].downcase)
+      end
+    ##########################################################
   end
 
   def show
@@ -25,7 +30,7 @@ class StylistsController < ApplicationController
 
     if @stylist.save
         flash[:message] = "You've successfully created a new Hairstylist named #{@stylist.name.upcase}."
-        redirect_to new_user_user_stylist_path(@user)
+        redirect_to new_user_user_stylist_path(@user) #directly send the user to the review page 
     else
         render :new
     end
@@ -69,3 +74,33 @@ class StylistsController < ApplicationController
     end
 
 end
+
+
+
+
+# understand the challenge
+
+# step 1 , don't code, pseudo code
+
+# create a search bar on stylists homepage to search stylists by name ( partial string match )
+
+
+# break it down into smaller steps (in order of request response)
+
+    # 1. Where does the response originate? 
+            # => Form on the stylists index page
+
+    # 2. Create a route for the form to go to a controller action(index action or other action)
+            # => index action 
+
+    # 3. Write logic in controller ( or model) to filter by query
+        #in stylist controller
+          # => if params[:query] && !params[:query].empty?
+          # =>   @stylists = @stylists.search(params[:query].downcase)
+        #in stylist.rb   <=== where partial string match!!!!
+          # def self.search(params)
+          #   where("Lower(name) LIKE ? ", "%#{params}%")
+          # end
+
+    # 4. display results on index page or new view
+         # boom on index page!!

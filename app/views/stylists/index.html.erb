@@ -1,7 +1,19 @@
 
 
-
 <h2> We have total <span style="color:crimson;"> <%= @stylists.size %> </span> <%= "hairstylist".pluralize(@stylists.size) %> </h2>
+
+
+
+
+<!-- ############LIVE CODING  :  Build a Search bar to find by stylist name #########-->
+      <%= form_with url: "/stylists", method: :get do |form| %>
+        <%= form.label :query, "Search for Hairstylist Name :" %>
+        <%= form.text_field :query %>
+        <%= form.submit "Search" %>
+      <% end %>
+<!--#################################################################################-->
+
+
 
   <ul class="split">
   <!-- all hairlists list -->
