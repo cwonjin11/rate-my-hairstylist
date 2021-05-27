@@ -24,7 +24,7 @@ class StylistsController < ApplicationController
       @stylist = Stylist.new(stylist_params)
 
     if @stylist.save
-        flash[:message] = "You've seccessfully created a new Hairstylist named #{@stylist.name.upcase}."
+        flash[:message] = "You've successfully created a new Hairstylist named #{@stylist.name.upcase}."
         redirect_to new_user_user_stylist_path(@user)
     else
         render :new
@@ -39,14 +39,14 @@ class StylistsController < ApplicationController
 
 
   def update
-    # binding.pry
+
     if @stylist.update(stylist_edit_params)
-      # binding.pry
       flash[:message] = "Successfully Updated! "
       redirect_to stylist_path(@stylist)
     else
       render :edit
     end
+    
   end
 
 
