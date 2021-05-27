@@ -6,9 +6,9 @@
 
 
 
-<% User.all.each do |user| %>
+<!-- <% User.all.each do |user| %>
 <li><%= user.username %> - <%= user.user_stylists.size %></li>
-<% end %>
+<% end %> -->
 <%= form_with url: '/login' do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username, placeholder: true %><br>

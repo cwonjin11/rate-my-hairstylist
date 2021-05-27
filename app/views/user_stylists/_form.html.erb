@@ -5,6 +5,7 @@
    <%= f.collection_select :stylist_id, Stylist.order('created_at DESC').all, :id, :name, 
     {:prompt => true} %> <br>
 
+ <!-- <%= select("user_stylist", "stylist_id", Stylist.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'None' }) %> -->
 
 <br>
     <% if params[:id] == nil   %>

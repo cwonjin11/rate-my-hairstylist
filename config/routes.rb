@@ -2,22 +2,27 @@ Rails.application.routes.draw do
 
 
 root "sessions#welcome"
+get 'pages', to: 'pages#index'#, as:'pages'  
 
 
-get 'pages', to: 'pages#index'#, as:'pages'      
-####### OmniAuth #################   google ########
+####### OmniAuth #################   google ###################################
 # get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 get '/auth/:provider/callback', to: 'sessions#omniauth'  #<= makes more dynamic
-#################################################################
+###############################################################################
 
-########  SESSIONS ROUTES  ######## SIGN UP IS IN USER ROUTES ALREADY!! 
-get '/signup' => 'users#new'
-post '/signup' => 'users#create'
 
+########  SIGN UP ROUTES (custom)  ######## 
+get '/signup', to: "users#new"
+post '/signup', to: "users#create"
+
+
+########  SESSIONS ROUTES  ########
 get 'login', to: "sessions#new"
 post 'login', to: "sessions#create"
 delete 'logout', to: "sessions#destroy"
 #################################################################
+
+
 
 #################rested routes####################################
   resources :users, :except => [:index] do
