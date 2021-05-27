@@ -99,3 +99,19 @@ class UserStylistsController < ApplicationController
 
 
 end
+
+
+# understand the challenge
+
+# step 1 , don't code, pseudo code
+
+# create a search bar on stylists homepage to search stylists by name ( partial string match )
+
+
+# break it down into smaller steps (in order of request response)
+
+    # 1. Where does the response originate? Form on the stylists index page
+    # 2. Create a route for the form to go to a controller action(index action or other action)
+            # => I index action 
+    # 3. Write logic in controller ( or model) to filter by query
+    # 4. display results on index page or new view
