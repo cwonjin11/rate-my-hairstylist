@@ -11,7 +11,11 @@ class UserStylist < ApplicationRecord
     too_long: "%{count} characters is the maximum allowed" }
 
   # accepts_nested_attributes_for :stylist, :reject_if => proc { |attributes| attributes['name, phone, shop_name, address'].blank? }
-
+  validate :haircut_date_cannot_be_the_future
+  def haircut_date_cannot_be_the_future
+    errors.add(:haircut_date, "can't be in the future") if
+      !haircut_date.blank? and haircut_date > Date.today
+  end
 
   ######### Recently High-Rated Reviews on PAGES#INDEX ################
   scope :stars_more_than, ->(amount) { 
